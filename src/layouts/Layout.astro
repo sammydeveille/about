@@ -1,0 +1,429 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Sammy Deveille – Engineering leader with expertise in scaling teams, optimising delivery, and driving digital transformation." } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Sammy Deveille" />
+    <link rel="canonical" href={canonicalURL.href} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:locale" content="en_GB" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sammy Deveille",
+      "jobTitle": "Technical Lead",
+      "url": canonicalURL.href,
+      "sameAs": [
+        "https://www.linkedin.com/in/sammydeveille/",
+        "https://github.com/SammyDeveille",
+        "https://github.com/SammyDeveilleASP"
+      ]
+    })} />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --color-bg: #0f0f0f;
+    --color-surface: #1a1a1a;
+    --color-text: #e0e0e0;
+    --color-text-muted: #888;
+    --color-accent: #6cb4ee;
+    --color-border: #2a2a2a;
+    --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', monospace;
+    --max-width: 720px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  body {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .hero {
+    margin-bottom: 4rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .tagline {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    max-width: 600px;
+    margin-bottom: 1.5rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .social-links a {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+  }
+
+  .social-links a:hover {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .social-links svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .social-links .icon-personal {
+    opacity: 0.6;
+  }
+
+  .social-links .icon-personal:hover {
+    opacity: 1;
+  }
+
+  section {
+    margin-bottom: 3.5rem;
+  }
+
+  .role {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .role:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .role-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  .role-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+
+  .role-info {
+    flex: 1;
+  }
+
+  .role-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    text-align: right;
+  }
+
+  .role-desc {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-top: 0.2rem;
+  }
+
+  .role h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 0.75rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .role-title {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .role-meta {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    margin-top: 0.25rem;
+  }
+
+  .role ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .role li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .role li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+
+  .tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .tech-badges span {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    border-radius: 4px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+
+  /* Brand colours — background is a muted version, text is the brand colour */
+  /* AWS - Orange */
+  .tech-badges span[data-tech="aws"] { background: #3d2200; color: #ff9900; border-color: #5c3500; }
+  /* Node.js - Green */
+  .tech-badges span[data-tech="nodejs"] { background: #1a3a1a; color: #68a063; border-color: #2d5a2d; }
+  /* React - Cyan/Light blue */
+  .tech-badges span[data-tech="react"] { background: #0a2a3a; color: #61dafb; border-color: #1a4a5a; }
+  /* Docker - Blue */
+  .tech-badges span[data-tech="docker"] { background: #0a1e3d; color: #2496ed; border-color: #1a3560; }
+  /* Next.js - White on dark */
+  .tech-badges span[data-tech="nextjs"] { background: #1a1a1a; color: #ffffff; border-color: #3a3a3a; }
+  /* gRPC - Teal */
+  .tech-badges span[data-tech="grpc"] { background: #0a2e2e; color: #5ac2c2; border-color: #1a4a4a; }
+  /* GraphQL - Pink/Magenta */
+  .tech-badges span[data-tech="graphql"] { background: #2a0a2a; color: #e10098; border-color: #4a1a4a; }
+  /* Angular - Red */
+  .tech-badges span[data-tech="angular"] { background: #2a0a0a; color: #dd0031; border-color: #4a1a1a; }
+  /* Azure - Microsoft Blue */
+  .tech-badges span[data-tech="azure"] { background: #0a1a3a; color: #0078d4; border-color: #1a3060; }
+  /* Terraform - Purple */
+  .tech-badges span[data-tech="terraform"] { background: #1a0a2e; color: #7b42bc; border-color: #2e1a4a; }
+  /* PHP - Indigo/Lavender */
+  .tech-badges span[data-tech="php"] { background: #1a1a2e; color: #777bb4; border-color: #2e2e4a; }
+  /* .NET - Purple */
+  .tech-badges span[data-tech="dotnet"] { background: #1a0a2a; color: #512bd4; border-color: #2e1a4a; }
+  /* Python - Yellow */
+  .tech-badges span[data-tech="python"] { background: #2a2a0a; color: #ffd43b; border-color: #4a4a1a; }
+  /* ELK/Elastic - Teal */
+  .tech-badges span[data-tech="elk"] { background: #0a2a2a; color: #00bfb3; border-color: #1a4a4a; }
+  /* RabbitMQ - Orange */
+  .tech-badges span[data-tech="rabbitmq"] { background: #3d1a00; color: #ff6600; border-color: #5c2e00; }
+  /* Redis - Red */
+  .tech-badges span[data-tech="redis"] { background: #2a0a0a; color: #dc382d; border-color: #4a1a1a; }
+  /* MySQL - Blue */
+  .tech-badges span[data-tech="mysql"] { background: #0a1a2e; color: #4479a1; border-color: #1a3050; }
+  /* WebSocket - Grey */
+  .tech-badges span[data-tech="websocket"] { background: #1a1a1a; color: #a0a0a0; border-color: #3a3a3a; }
+  /* SQL - Blue */
+  .tech-badges span[data-tech="sql"] { background: #0a1a2e; color: #4479a1; border-color: #1a3050; }
+  /* NUnit - Green */
+  .tech-badges span[data-tech="nunit"] { background: #1a3a1a; color: #5bb75b; border-color: #2d5a2d; }
+  /* C++ - Blue */
+  .tech-badges span[data-tech="cpp"] { background: #0a1a3a; color: #659ad2; border-color: #1a3060; }
+  /* Unix - Grey */
+  .tech-badges span[data-tech="unix"] { background: #1a1a1a; color: #b0b0b0; border-color: #3a3a3a; }
+  /* Kubernetes - Blue */
+  .tech-badges span[data-tech="kubernetes"] { background: #0a1a3d; color: #326ce5; border-color: #1a3560; }
+  /* Jenkins - Red/Brown */
+  .tech-badges span[data-tech="jenkins"] { background: #2a1a0a; color: #d33833; border-color: #4a2a1a; }
+  /* Grafana - Orange */
+  .tech-badges span[data-tech="grafana"] { background: #3d2200; color: #f46800; border-color: #5c3500; }
+  /* REST - Green */
+  .tech-badges span[data-tech="rest"] { background: #1a3a1a; color: #6ba368; border-color: #2d5a2d; }
+  /* Java - Red/Orange */
+  .tech-badges span[data-tech="java"] { background: #2a1a0a; color: #ed8b00; border-color: #4a2a1a; }
+  /* JavaScript - Yellow */
+  .tech-badges span[data-tech="javascript"] { background: #2a2a0a; color: #f7df1e; border-color: #4a4a1a; }
+  /* PostgreSQL - Blue */
+  .tech-badges span[data-tech="postgresql"] { background: #0a1a3a; color: #336791; border-color: #1a3060; }
+  /* Helm - Blue */
+  .tech-badges span[data-tech="helm"] { background: #0a1a3d; color: #0f1689; border-color: #1a3060; }
+  /* Algolia - Blue */
+  .tech-badges span[data-tech="algolia"] { background: #0a1a3d; color: #5468ff; border-color: #1a3060; }
+  /* GitHub - Grey/White */
+  .tech-badges span[data-tech="github"] { background: #1a1a1a; color: #c9d1d9; border-color: #3a3a3a; }
+  /* Microsoft - Blue */
+  .tech-badges span[data-tech="microsoft"] { background: #0a1a3a; color: #00a4ef; border-color: #1a3060; }
+  /* Perl - Blue/Grey */
+  .tech-badges span[data-tech="perl"] { background: #1a1a2e; color: #7b8dab; border-color: #2e2e4a; }
+  /* Ansible - Red */
+  .tech-badges span[data-tech="ansible"] { background: #2a0a0a; color: #ee0000; border-color: #4a1a1a; }
+
+  .skills-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .skills-section h3 {
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .skills-section h4 {
+    margin-bottom: 0.3rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .skills-section p {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .col-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 600px) {
+    body {
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .two-col {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .role-header {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .role-right {
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+</style>
