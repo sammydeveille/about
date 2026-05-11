@@ -2,8 +2,8 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://sammydeveille.github.io',
-  base: '/about',
+  site: 'https://sammydeveille.com',
+  base: '/',
   output: 'static',
   integrations: [sitemap()],
 });
