@@ -121,6 +121,41 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     margin-bottom: 4rem;
   }
 
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .hero-left {
+    flex: 1;
+  }
+
+  .site-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-end;
+    padding-top: 0.75rem;
+  }
+
+  .site-nav a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .site-nav a:hover {
+    color: var(--color-text);
+  }
+
+  .site-nav a.active {
+    color: var(--color-accent);
+  }
+
   .subtitle {
     font-size: 1.2rem;
     font-weight: 500;

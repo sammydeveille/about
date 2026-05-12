@@ -6,8 +6,17 @@ const base = import.meta.env.BASE_URL;
 <Layout title="Sammy Deveille – Technical Lead">
   <main>
     <header class="hero">
-      <h1>Sammy Deveille</h1>
-      <p class="subtitle">Technical Lead</p>
+      <div class="hero-top">
+        <div class="hero-left">
+          <h1>Sammy Deveille</h1>
+          <p class="subtitle">Technical Lead</p>
+        </div>
+        <nav class="site-nav">
+          <a href={`${base}`} class="active">Dev</a>
+          <a href={`${base}music`}>Music</a>
+          <a href={`${base}photography`}>Photo</a>
+        </nav>
+      </div>
       <p class="tagline">Experienced engineering leader with expertise in scaling teams, optimizing processes, and driving digital transformation. Proven success in cloud infrastructure, Agile methodologies, and security compliance. Skilled in leading multi-disciplinary teams and aligning engineering efforts with business goals.</p>
       <nav class="social-links">
         <a href="https://www.linkedin.com/in/sammydeveille/" target="_blank" rel="noopener" aria-label="LinkedIn">

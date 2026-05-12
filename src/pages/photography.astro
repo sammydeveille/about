@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
+
+const photos = [
+  { title: "Tutankhamun's Ka", id: '1002048230', url: 'https://500px.com/photo/1002048230/tutankhamuns-ka-by-sammy-deveille' },
+  { title: 'Tunnel Lights', id: '243422165', url: 'https://500px.com/photo/243422165/tunnel-lights-by-sammy-deveille' },
+  { title: 'Through the fields', id: '226838883', url: 'https://500px.com/photo/226838883/through-the-fields-by-sammy-deveille' },
+  { title: 'Footsteps in the desert', id: '216918575', url: 'https://500px.com/photo/216918575/footsteps-in-the-desert-by-sammy-deveille' },
+  { title: 'Wall', id: '185373023', url: 'https://500px.com/photo/185373023/wall-by-sammy-deveille' },
+  { title: 'Heading West', id: '185272175', url: 'https://500px.com/photo/185272175/heading-west-by-sammy-deveille' },
+  { title: 'Walk on the Sandsea', id: '185063573', url: 'https://500px.com/photo/185063573/walk-on-the-sandsea-by-sammy-deveille' },
+  { title: 'Dunes', id: '184845645', url: 'https://500px.com/photo/184845645/dunes-by-sammy-deveille' },
+  { title: 'Up the stairs', id: '184709059', url: 'https://500px.com/photo/184709059/up-the-stairs-by-sammy-deveille' },
+  { title: 'Camel Trip', id: '184586587', url: 'https://500px.com/photo/184586587/camel-trip-by-sammy-deveille' },
+  { title: 'Giddy Goat', id: '167969591', url: 'https://500px.com/photo/167969591/giddy-goat-by-sammy-deveille' },
+  { title: 'Porte cochère', id: '156169267', url: 'https://500px.com/photo/156169267/porte-cochere-by-sammy-deveille' },
+  { title: 'Manometer', id: '135668627', url: 'https://500px.com/photo/135668627/manometer-by-sammy-deveille' },
+  { title: 'DryRiver', id: '127987753', url: 'https://500px.com/photo/127987753/dryriver-by-sammy-deveille' },
+  { title: 'Dusk', id: '110025311', url: 'https://500px.com/photo/110025311/dusk-by-sammy-deveille' },
+  { title: 'British Smog', id: '108128263', url: 'https://500px.com/photo/108128263/british-smog-by-sammy-deveille' },
+  { title: 'Tropical Plant', id: '79562525', url: 'https://500px.com/photo/79562525/tropical-plant-by-sammy-deveille' },
+  { title: 'Cala fuili', id: '76968253', url: 'https://500px.com/photo/76968253/cala-fuili-by-sammy-deveille' },
+  { title: 'Brixton shop', id: '71160665', url: 'https://500px.com/photo/71160665/brixton-shop-by-sammy-deveille' },
+  { title: 'London sunset', id: '70927897', url: 'https://500px.com/photo/70927897/london-sunset-by-sammy-deveille' },
+  { title: 'Clubbin', id: '70927355', url: 'https://500px.com/photo/70927355/clubbin-by-sammy-deveille' },
+  { title: "Father's hand", id: '70333577', url: 'https://500px.com/photo/70333577/fathers-hand-by-sammy-deveille' },
+  { title: 'Kaknäs Tower', id: '70322257', url: 'https://500px.com/photo/70322257/kaknas-tower-by-sammy-deveille' },
+  { title: 'Party portrait', id: '70223337', url: 'https://500px.com/photo/70223337/party-portrait-by-sammy-deveille' },
+  { title: 'White flower', id: '68878357', url: 'https://500px.com/photo/68878357/white-flower-by-sammy-deveille' },
+  { title: 'Pub friend', id: '67943539', url: 'https://500px.com/photo/67943539/pub-friend-by-sammy-deveille' },
+  { title: 'Contrabass', id: '58807154', url: 'https://500px.com/photo/58807154/contrabass-by-sammy-deveille' },
+  { title: 'Om', id: '53500330', url: 'https://500px.com/photo/53500330/om-by-sammy-deveille' },
+  { title: 'Norvegian House', id: '52220424', url: 'https://500px.com/photo/52220424/norvegian-house-by-sammy-deveille' },
+  { title: 'Royal Opera House', id: '52220422', url: 'https://500px.com/photo/52220422/royal-opera-house-by-sammy-deveille' },
+];
+---
+
+<Layout title="Sammy Deveille – Photography">
+  <main>
+    <header class="hero">
+      <div class="hero-top">
+        <div class="hero-left">
+          <h1>Sammy Deveille</h1>
+          <p class="subtitle">Photography</p>
+        </div>
+        <nav class="site-nav">
+          <a href={`${base}`}>Dev</a>
+          <a href={`${base}music`}>Music</a>
+          <a href={`${base}photography`} class="active">Photo</a>
+        </nav>
+      </div>
+      <nav class="social-links">
+        <a href="https://500px.com/p/SammyDeveille" target="_blank" rel="noopener" aria-label="500px">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </a>
+      </nav>
+    </header>
+
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <div class="photo-grid">
+        {photos.map((photo) => (
+          <a href={photo.url} target="_blank" rel="noopener" class="photo-tile" title={photo.title}>
+            <img
+              src={`https://drscdn.500px.org/photo/${photo.id}/q%3D80_m%3D600/v2`}
+              alt={photo.title}
+              loading="lazy"
+            />
+            <span class="photo-title">{photo.title}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .photo-tile {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: border-color 0.2s, transform 0.2s;
+    display: block;
+  }
+
+  .photo-tile:hover {
+    border-color: var(--color-accent);
+    transform: scale(1.02);
+    opacity: 1;
+  }
+
+  .photo-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .photo-tile:hover .photo-title {
+    opacity: 1;
+  }
+
+  @media (max-width: 600px) {
+    .photo-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
