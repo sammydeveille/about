@@ -28,7 +28,7 @@ Event website provider
 - Transitioned team to adopt TDD and documentation-first practices for continuous improvement
 - Mentored team, fostering skill growth and knowledge sharing
 
-`React` `NodeJS` `Lucee` `AWS` `Ansible` `Terraform` `Grafana` `Prometheus`
+`React` `NodeJS` `Lucee` `AWS` `Ansible` `Terraform` `Grafana` `Prometheus` `MySQL` `DynamoDB` `ElastiCache`
 
 ---
 
@@ -138,7 +138,7 @@ AD, App Gateway, Blob Storage, Log Analytics, VMs
 K6, Mocha, Jest, NUnit, OpenAPI, Storybook
 
 **Databases & Messaging**
-MySQL, PostgreSQL, InfluxDB, Redis, RabbitMQ, Pusher, ServiceBus
+MySQL, PostgreSQL, InfluxDB, DynamoDB, Redis, RabbitMQ, Pusher, ServiceBus
 
 **DevOps & Infrastructure**
 Docker, K8S, Helm, Jenkins, TeamCity, Octopus
