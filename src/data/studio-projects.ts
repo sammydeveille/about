@@ -152,7 +152,7 @@ export const projects: StudioProject[] = [
     location: "London, UK",
     category: "Studio Recording",
     iconColor: "#7c4dff",
-    image: "/studio/music/bardoland.png",
+    image: "/studio/music/bardoland.jpg",
     sections: [
       {
         title: "Production & Release",
@@ -288,7 +288,6 @@ export const projects: StudioProject[] = [
     embedType: "youtube",
     tracks: [],
     externalLinks: [
-      { label: "YouTube", url: "https://youtu.be/LR1slWguLEw" },
       { label: "YouTube (Live)", url: "https://www.youtube.com/watch?v=NfX0cs_Vr9U" },
     ],
   },
