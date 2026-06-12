@@ -180,6 +180,43 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    title: "Tuscany",
+    subtitle: "Photography",
+    type: "photo",
+    role: "Photography",
+    dateStart: "2017-01",
+    dateEnd: "2017-12",
+    description: "Photography series across Tuscany, Italy.",
+    status: "completed",
+    location: "Tuscany, IT",
+    category: "Photography",
+    iconColor: "#4caf50",
+    image: "/studio/photo/toscana/1.jpg",
+    sections: [
+      {
+        title: "Project",
+        items: [
+          "Travel photography across Tuscany",
+        ],
+      },
+    ],
+    tags: [
+      { label: "Travel" },
+    ],
+    socialLinks: [
+      { type: "500px", url: "https://500px.com/p/SammyDeveille" },
+    ],
+    images: [
+      "/studio/photo/toscana/1.jpg",
+      "/studio/photo/toscana/2.jpg",
+      "/studio/photo/toscana/3.jpg",
+      "/studio/photo/toscana/4.jpg",
+      "/studio/photo/toscana/5.jpg",
+      "/studio/photo/toscana/6.jpg",
+      "/studio/photo/toscana/7.jpg",
+    ],
+  },
+  {
     title: "BeatUp Records",
     subtitle: "Soul Retro",
     type: "music",
