@@ -254,6 +254,39 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    title: "David Axelrod The Edge Bass Cover",
+    subtitle: "Jazz Funk",
+    type: "music",
+    role: "Bass",
+    dateStart: "2017-01",
+    dateEnd: "2017-01",
+    description: "Bass cover of David Axelrod. All rights to the original music belong to the artist.",
+    status: "completed",
+    location: "London, UK",
+    category: "Cover",
+    iconColor: "#ff9800",
+    image: "/studio/music/cover2.png",
+    sections: [
+      {
+        title: "Cover",
+        items: [
+          "Bass cover — David Axelrod",
+          "No rights to the original music",
+        ],
+      },
+    ],
+    tags: [
+      { label: "Jazz" },
+      { label: "Cover" },
+    ],
+    socialLinks: [
+      { type: "youtube", url: "https://www.youtube.com/watch?v=3PcTqT_ueZA" },
+    ],
+    embedUrl: "https://www.youtube.com/embed/3PcTqT_ueZA",
+    embedType: "youtube",
+    tracks: [],
+  },
+  {
     title: "Grace Moon and the Jaguar",
     subtitle: "Cinematic Pop",
     type: "music",
@@ -360,6 +393,72 @@ export const projects: StudioProject[] = [
     tracks: [],
     externalLinks: [
       { label: "SoundCloud", url: "https://soundcloud.com/sammybass/stopmotion-painted-war-outro" },
+    ],
+  },
+  {
+    title: "Joss Stone L.O.V.E Bass Cover",
+    subtitle: "Soul",
+    type: "music",
+    role: "Bass",
+    dateStart: "2014-01",
+    dateEnd: "2014-12",
+    description: "Bass cover of Josh Stone's L.O.V.E. All rights to the original music belong to the artist.",
+    status: "completed",
+    location: "London, UK",
+    category: "Cover",
+    iconColor: "#ff9800",
+    image: "/studio/music/cover.jpg",
+    sections: [
+      {
+        title: "Cover",
+        items: [
+          "Bass cover — Josh Stone, L.O.V.E",
+          "No rights to the original music",
+        ],
+      },
+    ],
+    tags: [
+      { label: "Soul" },
+      { label: "Cover" },
+    ],
+    socialLinks: [
+      { type: "youtube", url: "https://www.youtube.com/watch?v=CpXfHco9-P8" },
+    ],
+    embedUrl: "https://www.youtube.com/embed/CpXfHco9-P8",
+    embedType: "youtube",
+    tracks: [],
+  },
+  {
+    title: "London",
+    subtitle: "Photography",
+    type: "photo",
+    role: "Photography",
+    dateStart: "2013-01",
+    dateEnd: "2013-12",
+    description: "Street photography series around London.",
+    status: "completed",
+    location: "London, UK",
+    category: "Photography",
+    iconColor: "#4caf50",
+    image: "/studio/photo/london/1.jpg",
+    sections: [
+      {
+        title: "Project",
+        items: [
+          "Street photography across London",
+        ],
+      },
+    ],
+    tags: [
+      { label: "Street" },
+    ],
+    socialLinks: [
+      { type: "500px", url: "https://500px.com/p/SammyDeveille" },
+    ],
+    images: [
+      "/studio/photo/london/1.jpg",
+      "/studio/photo/london/2.jpg",
+      "/studio/photo/london/3.jpg",
     ],
   },
   {
