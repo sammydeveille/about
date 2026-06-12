@@ -254,7 +254,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
-    title: "David Axelrod The Edge Bass Cover",
+    title: "Cover | David Axelrod - The Edge",
     subtitle: "Jazz Funk",
     type: "music",
     role: "Bass",
@@ -356,7 +356,6 @@ export const projects: StudioProject[] = [
       "/studio/photo/morocco/2.jpg",
       "/studio/photo/morocco/3.jpg",
       "/studio/photo/morocco/4.jpg",
-      "/studio/photo/morocco/5.jpg",
     ],
   },
   {
@@ -396,7 +395,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
-    title: "Joss Stone L.O.V.E Bass Cover",
+    title: "Cover | Joss Stone - L.O.V.E",
     subtitle: "Soul",
     type: "music",
     role: "Bass",
@@ -459,6 +458,8 @@ export const projects: StudioProject[] = [
       "/studio/photo/london/1.jpg",
       "/studio/photo/london/2.jpg",
       "/studio/photo/london/3.jpg",
+      "/studio/photo/london/4.jpg",
+      "/studio/photo/london/5.jpg",
     ],
   },
   {
