@@ -1,0 +1,682 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSortedProjects } from '../data/studio-projects';
+
+const projects = getSortedProjects();
+
+function formatYear(date: string): string {
+  if (date === "Present") return "Present";
+  return date.split("-")[0];
+}
+---
+
+<Layout title="Studio – Sammy Deveille" description="Creative projects spanning music production and photography by Sammy Deveille.">
+  <main>
+    <header class="hero">
+      <div class="hero-title-row">
+        <h1>Studio</h1>
+        <nav class="page-nav" aria-label="Site navigation">
+          <a href="/" class="site-nav-link">Dev</a>
+          <a href="/studio" class="site-nav-link active">Studio</a>
+        </nav>
+      </div>
+      <p class="subtitle">Projects</p>
+      <p class="tagline">A timeline of musical and photography projects, from studio sessions to the street.</p>
+    </header>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="music">Music</button>
+      <button class="filter-btn" data-filter="photo">Photo</button>
+    </div>
+
+    <section id="projects" class="timeline">
+      {projects.map((project, index) => (
+        <article class={`timeline-entry${index === projects.length - 1 ? ' last' : ''}`} data-type={project.type}>
+          <div class="timeline-left">
+            <span class="timeline-date">{formatYear(project.dateStart)}</span>
+          </div>
+
+          <div class="timeline-center">
+            <div class={`timeline-icon timeline-icon--${project.type}`}>
+              {project.type === "photo" ? (
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-label="Photo project">
+                  <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                  <path d="M2 6a2 2 0 0 1 2-2h3l2-2h6l2 2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Zm10 11a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/>
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-label="Music project">
+                  <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6ZM10 19a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/>
+                </svg>
+              )}
+            </div>
+            <div class="timeline-line"></div>
+          </div>
+
+          <div class="timeline-right">
+            <details class="project-details">
+              <summary class="project-summary">
+                <div class="project-header">
+                  {project.image ? (
+                    <img src={project.image} alt={project.title} class="project-icon-img" />
+                  ) : (
+                    <div class="project-icon-badge" style={`background: ${project.iconColor};`}>
+                      {project.type === "photo" ? (
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff" aria-hidden="true">
+                          <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                          <path d="M2 6a2 2 0 0 1 2-2h3l2-2h6l2 2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Zm10 11a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/>
+                        </svg>
+                      ) : (
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff" aria-hidden="true">
+                          <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6ZM10 19a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/>
+                        </svg>
+                      )}
+                    </div>
+                  )}
+                  <div class="project-title-block">
+                    <h3 class="project-title">{project.title}</h3>
+                    <p class="project-subtitle">{project.category}</p>
+                    <div class="project-meta-row">
+                      {project.socialLinks && project.socialLinks.length > 0 && (
+                        <div class="project-social-links">
+                          {project.socialLinks.map((link) => (
+                            <a href={link.url} target="_blank" rel="noopener" aria-label={link.type} class="social-icon-link">
+                              {link.type === "facebook" && (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                              )}
+                              {link.type === "bandcamp" && (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/></svg>
+                              )}
+                              {link.type === "soundcloud" && (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.05-.1-.1-.1m-.899.828c-.06 0-.091.037-.104.094L0 14.479l.172 1.3c.013.06.044.094.104.094.053 0 .09-.04.104-.094l.2-1.3-.2-1.332c-.014-.057-.051-.094-.104-.094m1.8-1.32c-.062 0-.107.046-.112.1l-.209 2.641.209 2.564c.005.06.05.1.112.1.062 0 .107-.04.112-.1l.239-2.564-.239-2.641c-.005-.058-.05-.1-.112-.1m.899-.166c-.073 0-.12.046-.127.1l-.2 2.809.2 2.695c.007.065.054.107.127.107.073 0 .12-.042.126-.107l.227-2.695-.227-2.809c-.006-.06-.053-.1-.126-.1m.9-.145c-.08 0-.131.054-.139.12l-.186 2.955.186 2.793c.008.066.059.12.139.12s.131-.054.139-.12l.209-2.793-.209-2.955c-.008-.066-.059-.12-.139-.12m.898-.097c-.088 0-.139.058-.145.126l-.178 3.052.178 2.855c.006.07.057.126.145.126.088 0 .139-.056.145-.126l.2-2.855-.2-3.052c-.006-.068-.057-.126-.145-.126m.9-.08c-.1 0-.153.066-.157.14l-.163 3.132.163 2.91c.004.078.057.14.157.14s.152-.062.157-.14l.186-2.91-.186-3.132c-.005-.074-.058-.14-.157-.14m.898-.048c-.107 0-.159.07-.163.146l-.15 3.18.15 2.96c.004.08.056.146.163.146.106 0 .159-.066.163-.146l.17-2.96-.17-3.18c-.004-.076-.057-.146-.163-.146m1.498-1.502c-.107 0-.166.074-.17.153l-.143 4.682.143 2.982c.004.082.063.153.17.153.104 0 .166-.07.17-.153l.16-2.982-.16-4.682c-.004-.079-.066-.153-.17-.153m.9.044c-.115 0-.173.08-.176.16l-.13 4.636.13 2.96c.003.086.061.16.176.16.113 0 .173-.074.176-.16l.148-2.96-.148-4.636c-.003-.08-.063-.16-.176-.16m.9-.09c-.122 0-.18.082-.184.166l-.124 4.726.124 2.934c.004.088.062.166.184.166.12 0 .18-.078.184-.166l.14-2.934-.14-4.726c-.004-.084-.064-.166-.184-.166m.9-.066c-.13 0-.187.088-.19.174l-.115 4.792.115 2.908c.003.09.06.174.19.174.128 0 .186-.084.19-.174l.13-2.908-.13-4.792c-.004-.086-.062-.174-.19-.174m.898-.028c-.138 0-.194.09-.197.178l-.107 4.82.107 2.882c.003.092.06.178.197.178.136 0 .194-.086.197-.178l.12-2.882-.12-4.82c-.003-.088-.06-.178-.197-.178m1.498-.96c-.15 0-.207.098-.21.192l-.095 5.78.095 2.848c.003.098.06.192.21.192.146 0 .207-.094.21-.192l.11-2.848-.11-5.78c-.003-.094-.064-.192-.21-.192m.9.138c-.16 0-.214.104-.217.2l-.083 5.642.083 2.812c.003.1.057.2.217.2.156 0 .214-.1.217-.2l.094-2.812-.094-5.642c-.003-.096-.06-.2-.217-.2m.898-.222c-.166 0-.22.106-.222.204l-.078 5.866.078 2.784c.002.102.056.204.222.204.164 0 .22-.102.222-.204l.088-2.784-.088-5.866c-.002-.098-.058-.204-.222-.204m1.5-.286c-.176 0-.228.112-.23.214l-.065 6.15.065 2.75c.002.106.054.214.23.214.172 0 .228-.108.23-.214l.073-2.75-.073-6.15c-.002-.102-.058-.214-.23-.214m.898.27c-.182 0-.233.114-.235.218l-.057 5.88.057 2.72c.002.108.053.218.235.218.18 0 .233-.11.235-.218l.065-2.72-.065-5.88c-.002-.104-.055-.218-.235-.218m.9-.348c-.188 0-.24.118-.242.224l-.052 6.228.052 2.688c.002.11.054.224.242.224.186 0 .24-.114.242-.224l.058-2.688-.058-6.228c-.002-.106-.056-.224-.242-.224m1.175-.468c-.088 0-.175.024-.248.072-.088.058-.148.15-.158.256l-.036 6.636.036 2.66c.008.138.098.248.222.28.04.01.08.016.122.016.09 0 .174-.028.242-.076.098-.066.156-.168.162-.284l.04-2.596-.04-6.636c-.006-.12-.066-.222-.162-.284-.068-.048-.152-.076-.242-.076m1.176-.46c-.612 0-1.184.168-1.68.46-.212.128-.33.35-.33.598v8.452c.006.242.168.442.39.494.072.016.146.024.22.024h5.4c1.654 0 3-1.344 3-3s-1.346-3-3-3c-.476 0-.926.112-1.326.31-.37-2.15-2.248-3.788-4.49-3.788"/></svg>
+                              )}
+                              {link.type === "youtube" && (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                              )}
+                              {link.type === "spotify" && (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                              )}
+                              {link.type === "apple" && (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043A5.022 5.022 0 0 0 19.63.28a10.6 10.6 0 0 0-1.74-.13c-.422-.01-.845-.01-1.267 0H7.377c-.422-.01-.845-.01-1.267 0-.588.01-1.175.04-1.74.13a5.022 5.022 0 0 0-1.944.61C1.308 1.622.563 2.622.246 3.932a9.23 9.23 0 0 0-.24 2.19c-.01.42-.01.84 0 1.26v9.23c-.01.42-.01.84 0 1.26.033.74.104 1.48.24 2.19.317 1.31 1.062 2.31 2.18 3.043a5.022 5.022 0 0 0 1.944.61c.565.09 1.152.12 1.74.13.422.01.845.01 1.267 0h9.246c.422.01.845.01 1.267 0 .588-.01 1.175-.04 1.74-.13a5.022 5.022 0 0 0 1.944-.61c1.118-.733 1.863-1.733 2.18-3.043.136-.71.207-1.45.24-2.19.01-.42.01-.84 0-1.26v-9.23c.01-.42.01-.84 0-1.26zM17.994 17.08c0 .18-.01.36-.033.54a1.47 1.47 0 0 1-.462.89 1.51 1.51 0 0 1-.924.42c-.175.02-.35.02-.525.02h-.008c-.638 0-1.183-.2-1.627-.6a2.37 2.37 0 0 1-.733-1.32c-.05-.26-.067-.52-.05-.78.05-.72.35-1.31.89-1.76a2.24 2.24 0 0 1 1.25-.56c.16-.02.32-.02.48 0 .35.04.655.16.916.36.26.2.45.46.567.77.1.27.15.55.16.84v1.18zm-5.994-1.14V8.45c0-.23.04-.46.12-.68.13-.35.37-.6.72-.74.2-.08.41-.11.62-.11.14 0 .27.01.41.04.35.08.62.27.8.57.12.2.18.42.18.65v7.65c0 .04 0 .08-.01.12 0 .18-.01.36-.033.54a1.47 1.47 0 0 1-.462.89 1.51 1.51 0 0 1-.924.42c-.175.02-.35.02-.525.02h-.008c-.638 0-1.183-.2-1.627-.6a2.37 2.37 0 0 1-.733-1.32c-.05-.26-.067-.52-.05-.78.05-.72.35-1.31.89-1.76a2.24 2.24 0 0 1 1.25-.56c.08-.01.16-.01.24-.01V15.94z"/></svg>
+                              )}
+                              {link.type === "instagram" && (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                              )}
+                              {link.type === "website" && (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                              )}
+                              {link.type === "500px" && (
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.433 9.01A4.474 4.474 0 0 0 2.97 13.5a4.474 4.474 0 0 0 4.473 4.473 4.474 4.474 0 0 0 4.473-4.473h-1.79a2.684 2.684 0 0 1-2.683 2.683 2.684 2.684 0 0 1-2.683-2.683 2.684 2.684 0 0 1 2.683-2.683c.297 0 .586.048.858.14l.374-1.75a4.533 4.533 0 0 0-1.243-.196zM16.567 9.01a4.474 4.474 0 0 0-4.473 4.49 4.474 4.474 0 0 0 4.473 4.473A4.474 4.474 0 0 0 21.04 13.5a4.474 4.474 0 0 0-4.473-4.49zm0 1.79a2.684 2.684 0 0 1 2.683 2.7 2.684 2.684 0 0 1-2.683 2.683A2.684 2.684 0 0 1 13.884 13.5a2.684 2.684 0 0 1 2.683-2.7zM7.433 6.027l-.37 1.75h6.28v1.79H7.063l.37-1.75z"/></svg>
+                              )}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                      <div class="project-tags">
+                        <span class="project-tag">{project.role}</span>
+                        {project.tags.map((tag) => (
+                          <span class="project-tag">{tag.label}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </summary>
+
+              <div class="project-content">
+                {/* Band/project images */}
+                {project.type === "music" && project.images && project.images.length > 0 && (
+                  <div class="image-gallery">
+                    {project.images.map((image, i) => (
+                      <img src={image} alt={`${project.title} – ${i + 1}`} class="gallery-image" loading="lazy" />
+                    ))}
+                  </div>
+                )}
+
+                {/* Local videos */}
+                {project.type === "music" && project.videos && project.videos.length > 0 && (
+                  <div class="video-gallery">
+                    {project.videos.map((video) => (
+                      <video controls preload="metadata" class="project-video">
+                        <source src={video} type="video/mp4" />
+                      </video>
+                    ))}
+                  </div>
+                )}
+
+                {project.sections.map((section) => (
+                  <div class="project-section">
+                    <h4 class="section-title">{section.title}</h4>
+                    <ul class="section-items">
+                      {section.items.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+
+                {/* Embed - music projects */}
+                {project.type === "music" && project.embedUrl && (
+                  <div class={`embed-container ${project.embedType === "youtube" ? "embed-container--youtube" : "embed-container--fixed"}`}>
+                    <iframe
+                      src={project.embedUrl}
+                      width="100%"
+                      height={project.embedType === "youtube" ? undefined : project.embedType === "spotify" ? "352" : "166"}
+                      frameborder="0"
+                      allow="autoplay; encrypted-media; fullscreen"
+                      allowfullscreen
+                      title={`${project.title} embed`}
+                    ></iframe>
+                  </div>
+                )}
+
+                {/* YouTube external links rendered as embeds */}
+                {project.type === "music" && project.externalLinks && project.externalLinks.filter(link => link.url.includes("youtube.com/watch") || link.url.includes("youtu.be/")).map((link) => {
+                  const videoId = link.url.includes("youtu.be/") 
+                    ? link.url.split("youtu.be/")[1].split("?")[0]
+                    : new URL(link.url).searchParams.get("v");
+                  return videoId ? (
+                    <div class="embed-container embed-container--youtube">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${videoId}`}
+                        width="100%"
+                        frameborder="0"
+                        allow="autoplay; encrypted-media; fullscreen"
+                        allowfullscreen
+                        title={`${link.label}`}
+                      ></iframe>
+                    </div>
+                  ) : null;
+                })}
+
+                {/* Image gallery - photo projects */}
+                {project.type === "photo" && project.images && project.images.length > 0 && (
+                  <div class="image-gallery">
+                    {project.images.map((image, i) => (
+                      <img src={image} alt={`${project.title} – ${i + 1}`} class="gallery-image" loading="lazy" />
+                    ))}
+                  </div>
+                )}
+
+                {/* External links (non-YouTube only) */}
+                {project.type === "music" && project.externalLinks && project.externalLinks.filter(link => !link.url.includes("youtube.com/watch") && !link.url.includes("youtu.be/")).length > 0 && (
+                  <div class="external-links">
+                    {project.externalLinks.filter(link => !link.url.includes("youtube.com/watch") && !link.url.includes("youtu.be/")).map((link) => (
+                      <a href={link.url} target="_blank" rel="noopener" class="external-link">
+                        {link.label} →
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+              </div>
+            </details>
+          </div>
+        </article>
+      ))}
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .hero-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .filter-btn {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text);
+  }
+
+  .filter-btn.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #0f0f0f;
+  }
+
+  .timeline-entry.hidden {
+    display: none;
+  }
+
+  .page-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.1rem;
+    flex-shrink: 0;
+  }
+
+  .site-nav-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-family: var(--font-mono);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    line-height: 1.4;
+  }
+
+  .site-nav-link:hover {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .site-nav-link.active {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  /* Timeline layout */
+  .timeline {
+    position: relative;
+  }
+
+  .timeline-entry {
+    display: grid;
+    grid-template-columns: 80px 40px 1fr;
+    gap: 0;
+    padding-bottom: 2.5rem;
+  }
+
+  .timeline-entry.last {
+    padding-bottom: 0;
+  }
+
+  .timeline-entry.last .timeline-line {
+    display: none;
+  }
+
+  /* Left column: year + location */
+  .timeline-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 0.5rem;
+    padding-right: 0.75rem;
+    text-align: right;
+  }
+
+  .timeline-date {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  /* Center column: icon + vertical line */
+  .timeline-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .timeline-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .timeline-icon--music {
+    color: #b39ddb;
+    background: #1a0a2e;
+    border-color: #7c4dff;
+  }
+
+  .timeline-icon--photo {
+    color: #81c784;
+    background: #1a3a1a;
+    border-color: #4caf50;
+  }
+
+  .timeline-icon--web {
+    color: #90caf9;
+    background: #0a1a3a;
+    border-color: #42a5f5;
+  }
+
+  .timeline-line {
+    width: 2px;
+    flex: 1;
+    background: var(--color-border);
+    margin-top: 0.5rem;
+  }
+
+  /* Right column: project content */
+  .timeline-right {
+    padding-left: 1rem;
+    padding-top: 0;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  /* Details / expand-collapse */
+  .project-details {
+    border: none;
+    padding: 0;
+  }
+
+  .project-details summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .project-details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .project-details summary::marker {
+    display: none;
+    content: '';
+  }
+
+  .project-summary {
+    padding: 0;
+    border-radius: 6px;
+    transition: opacity 0.2s;
+  }
+
+  .project-summary:hover {
+    opacity: 0.85;
+  }
+
+  .project-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-icon-badge {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  .project-icon-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  .project-title-block {
+    flex: 1;
+  }
+
+  .project-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .project-subtitle {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin: 0.1rem 0 0 0;
+  }
+
+  /* Tags and social in summary */
+  .project-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .project-social-links {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .social-icon-link {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+  }
+
+  .social-icon-link:hover {
+    color: var(--color-accent);
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    align-items: center;
+  }
+
+  .project-tag {
+    display: inline-block;
+    padding: 0.12rem 0.45rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    border-radius: 3px;
+    color: #aaa;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+  }
+
+  /* Expanded content */
+  .project-content {
+    padding-top: 1rem;
+    padding-left: 0;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .project-band-image {
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .band-image {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .project-section {
+    margin-bottom: 1.25rem;
+  }
+
+  .section-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .section-items li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .section-items li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+
+  /* Embed */
+  .embed-container {
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  /* Image gallery */
+  .image-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    max-width: 100%;
+  }
+
+  .gallery-image {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+
+  .video-gallery {
+    margin-top: 1rem;
+  }
+
+  .project-video {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 6px;
+  }
+
+  .embed-container--youtube {
+    position: relative;
+    padding-top: 56.25%;
+  }
+
+  .embed-container--youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .embed-container--fixed iframe {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  /* External links */
+  .external-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .external-link {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .external-link:hover {
+    opacity: 0.7;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .timeline-entry {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .timeline-left {
+      align-items: flex-start;
+      text-align: left;
+      padding-right: 0;
+    }
+
+    .timeline-center {
+      display: none;
+    }
+
+    .timeline-right {
+      padding-left: 0;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const entries = document.querySelectorAll('.timeline-entry');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        entries.forEach(entry => {
+          const role = entry.getAttribute('data-type');
+          if (filter === 'all' || role === filter) {
+            entry.classList.remove('hidden');
+          } else {
+            entry.classList.add('hidden');
+          }
+        });
+      });
+    });
+  });
+</script>
