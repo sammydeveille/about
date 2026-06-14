@@ -137,6 +137,7 @@ export const projects: StudioProject[] = [
     embedType: "spotify",
     tracks: [],
     externalLinks: [
+      { label: "YouTube", url: "https://www.youtube.com/watch?v=J0DQ5KsPrLs" },
       { label: "Bandcamp", url: "https://brightcurse.bandcamp.com/album/time-of-the-healer" },
     ],
   },
