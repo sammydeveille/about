@@ -24,6 +24,7 @@ export interface BaseProject {
   category: string; // e.g. "Photography", "Music Prod"
   sections: Section[];
   tags: Tag[];
+  slug: string; // URL-friendly identifier for anchor links
   iconColor: string; // hex colour for the icon background circle
   image?: string; // path to project image in /public
   socialLinks?: { type: "facebook" | "bandcamp" | "soundcloud" | "youtube" | "spotify" | "apple" | "instagram" | "website" | "500px"; url: string }[];
@@ -64,6 +65,7 @@ export type StudioProject = MusicProject | PhotoProject;
 
 export const projects: StudioProject[] = [
   {
+    slug: "mixology",
     title: "Mixology",
     subtitle: "Jazz, Swing",
     type: "music",
@@ -102,6 +104,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    slug: "bright-curse-2019",
     title: "Bright Curse",
     subtitle: "Heavy Rock",
     type: "music",
@@ -142,6 +145,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    slug: "bardo-land",
     title: "Bardo Land",
     subtitle: "Experimental",
     type: "music",
@@ -181,6 +185,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    slug: "tuscany",
     title: "Tuscany",
     subtitle: "Photography",
     type: "photo",
@@ -218,6 +223,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    slug: "beatup-records",
     title: "BeatUp Records",
     subtitle: "Soul Retro",
     type: "music",
@@ -259,6 +265,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    slug: "konk",
     title: "Konk Recording Studio",
     subtitle: "Photography",
     type: "photo",
@@ -292,6 +299,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    slug: "cover-david-axelrod",
     title: "Cover | David Axelrod - The Edge",
     subtitle: "Jazz Funk",
     type: "music",
@@ -325,6 +333,7 @@ export const projects: StudioProject[] = [
     tracks: [],
   },
   {
+    slug: "grace-moon",
     title: "Grace Moon and the Jaguar",
     subtitle: "Cinematic Pop",
     type: "music",
@@ -363,6 +372,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    slug: "morocco",
     title: "Morocco",
     subtitle: "Photography",
     type: "photo",
@@ -397,6 +407,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    slug: "stopmotion",
     title: "StopMotion",
     subtitle: "Pop",
     type: "music",
@@ -433,6 +444,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    slug: "cover-joss-stone",
     title: "Cover | Joss Stone - L.O.V.E",
     subtitle: "Soul",
     type: "music",
@@ -466,6 +478,7 @@ export const projects: StudioProject[] = [
     tracks: [],
   },
   {
+    slug: "london",
     title: "London",
     subtitle: "Photography",
     type: "photo",
@@ -501,6 +514,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    slug: "bright-curse-2012",
     title: "Bright Curse",
     subtitle: "Heavy Rock",
     type: "music",
@@ -541,6 +555,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    slug: "the-fraziers",
     title: "The Fraziers",
     subtitle: "Rock",
     type: "music",
@@ -577,6 +592,7 @@ export const projects: StudioProject[] = [
     ],
   },
   {
+    slug: "twist-of-soul",
     title: "Twist of Soul",
     subtitle: "Soul, Funk, Rock",
     type: "music",

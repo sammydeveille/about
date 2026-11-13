@@ -28,7 +28,7 @@ const base = import.meta.env.BASE_URL;
         <a href="mailto:sammydeveille@gmail.com" aria-label="Email">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </a>
-        <a href={`${base}Sammy Deveille - Technical Lead - CV.pdf`} download aria-label="Download CV">
+        <a href="/cv" aria-label="View CV">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
         </a>
       </nav>
@@ -37,7 +37,9 @@ const base = import.meta.env.BASE_URL;
     <section id="experience">
       <h2>Experience</h2>
 
-      <article class="role">
+      <article id="asp" class="role">
+        <details class="role-expand">
+          <summary class="role-summary">
         <div class="role-header">
           <div class="role-left">
             <img src={`${base}logos/asp.png`} alt="ASP Events" class="role-logo" />
@@ -61,7 +63,6 @@ const base = import.meta.env.BASE_URL;
           <li>Implemented CI/CD pipelines with integrated security scanning, vulnerability tracking and automated deployment</li>
           <li>Optimized infrastructure spend, yielding annual savings</li>
         </ul>
-
         <h4>Delivery & Quality</h4>
         <ul>
           <li>Transitioned legacy ColdFusion solution to Lucee open source</li>
@@ -70,7 +71,6 @@ const base = import.meta.env.BASE_URL;
           <li>Stress and load testing for performance benchmarking and optimisation</li>
           <li>Introduced agentic development workflows for automated testing and documentation generation</li>
         </ul>
-
         <h4>Team & Culture</h4>
         <ul>
           <li>Transitioned team to adopt TDD and documentation-first practices for continuous improvement</li>
@@ -80,9 +80,15 @@ const base = import.meta.env.BASE_URL;
         <div class="tech-badges">
           <span data-tech="react">React</span><span data-tech="nodejs">NodeJS</span><span data-tech="nodejs">Lucee</span><span data-tech="aws">AWS</span><span data-tech="ansible">Ansible</span><span data-tech="terraform">Terraform</span><span data-tech="grafana">Grafana</span><span data-tech="grafana">Prometheus</span><span data-tech="mysql">MySQL</span><span data-tech="dynamodb">DynamoDB</span><span data-tech="aws">ElastiCache</span><span data-tech="aws">RDS</span>
         </div>
+          </summary>
+          <div class="role-expand-content">
+          </div>
+        </details>
       </article>
 
-      <article class="role">
+      <article id="springpod" class="role">
+        <details class="role-expand">
+          <summary class="role-summary">
         <div class="role-header">
           <div class="role-left">
             <img src={`${base}logos/springpod.png`} alt="Springpod" class="role-logo" />
@@ -98,23 +104,30 @@ const base = import.meta.env.BASE_URL;
             <span>London</span>
           </div>
         </div>
+
         <h4>Delivery</h4>
         <ul>
           <li>Product feature implementation including content delivery, identity federation, maintenance and support</li>
-          <li>Architected SSO identity federation for UCAS partnership"</li>
+          <li>Architected SSO identity federation for UCAS partnership</li>
         </ul>
-
         <h4>Team & Culture</h4>
         <ul>
           <li>Introduced Scrum in a team of 6 to align effort with company strategy</li>
           <li>Streamlined documentation and processes across teams</li>
         </ul>
+
         <div class="tech-badges">
           <span data-tech="nodejs">NodeJS</span><span data-tech="graphql">GraphQL</span><span data-tech="react">React</span><span data-tech="nextjs">Next.JS</span><span data-tech="aws">AWS</span><span data-tech="docker">Docker</span><span data-tech="kubernetes">K8S</span><span data-tech="grpc">gRPC</span><span data-tech="algolia">Algolia</span>
         </div>
+          </summary>
+          <div class="role-expand-content">
+          </div>
+        </details>
       </article>
 
-      <article class="role">
+      <article id="glisser" class="role">
+        <details class="role-expand">
+          <summary class="role-summary">
         <div class="role-header">
           <div class="role-left">
             <img src={`${base}logos/glisser.png`} alt="Glisser" class="role-logo" />
@@ -136,25 +149,21 @@ const base = import.meta.env.BASE_URL;
           <li>Joined as employee #3, built prototype into market-ready product through various seeds, securing Big Four clients</li>
           <li>Defined and executed technology roadmap from early prototype to enterprise-grade platform, including COVID-era pivot to virtual/hybrid</li>
         </ul>
-
         <h4>Architecture & Scale</h4>
         <ul>
           <li>Engineered platform for multi-million concurrent WebSocket connections</li>
           <li>Migrated cloud infrastructure for cost and performance</li>
           <li>Designed real-time messaging layer for polling, Q&A, slide sync and analytics</li>
         </ul>
-
         <h4>Team & Culture</h4>
         <ul>
           <li>Scaled engineering from 2 to 10 (company to 30+), shaping hiring, onboarding and mentoring engineers through to senior/lead roles</li>
         </ul>
-
         <h4>Security & Compliance</h4>
         <ul>
           <li>Led ISO 27001 certification and GDPR compliance</li>
           <li>Enforced OWASP standards with continuous security assessments toward SOC 2 compliance</li>
         </ul>
-
         <h4>DevOps & Infrastructure</h4>
         <ul>
           <li>Infrastructure as Code with Terraform</li>
@@ -163,14 +172,17 @@ const base = import.meta.env.BASE_URL;
         </ul>
 
         <div class="tech-badges">
-          <span data-tech="react">React</span><span data-tech="angular">Angular</span><span data-tech="nodejs">NodeJS</span><span data-tech="dotnet">.NET</span><span data-tech="php">PHP</span><span data-tech="python">Python</span><span data-tech="websocket">WebSocket</span><span data-tech="mysql">MySQL</span><span data-tech="redis">Redis</span>
+          <span data-tech="react">React</span><span data-tech="angular">Angular</span><span data-tech="nodejs">NodeJS</span><span data-tech="dotnet">.NET</span><span data-tech="php">PHP</span><span data-tech="python">Python</span><span data-tech="websocket">WebSocket</span><span data-tech="mysql">MySQL</span><span data-tech="redis">Redis</span><span data-tech="aws">AWS</span><span data-tech="azure">Azure</span><span data-tech="docker">Docker</span><span data-tech="rabbitmq">RabbitMQ</span><span data-tech="elk">ELK</span>
         </div>
-        <div class="tech-badges">
-          <span data-tech="aws">AWS</span><span data-tech="azure">Azure</span><span data-tech="docker">Docker</span><span data-tech="rabbitmq">RabbitMQ</span><span data-tech="elk">ELK</span>
-        </div>
+          </summary>
+          <div class="role-expand-content">
+          </div>
+        </details>
       </article>
 
-      <article class="role">
+      <article id="good-elearning" class="role">
+        <details class="role-expand">
+          <summary class="role-summary">
         <div class="role-header">
           <div class="role-left">
             <img src={`${base}logos/good-elearning.png`} alt="Good eLearning" class="role-logo" />
@@ -186,18 +198,26 @@ const base = import.meta.env.BASE_URL;
             <span>London</span>
           </div>
         </div>
+
         <ul>
           <li>Led development and rollout of a bespoke LMS in Angular & .NET, reporting directly to the CTO</li>
           <li>Content tracking (SCORM), organisational user management, CMS and reporting (HTML5, PDF, Excel)</li>
           <li>Dashboard and analytics visualisation</li>
           <li>Enforced TDD practices across the full stack, achieving 90% unit test coverage</li>
         </ul>
+
         <div class="tech-badges">
           <span data-tech="dotnet">.NET</span><span data-tech="dotnet">EF</span><span data-tech="angular">AngularJS</span><span data-tech="sql">SQL</span><span data-tech="nunit">NUnit</span><span data-tech="azure">Azure</span>
         </div>
+          </summary>
+          <div class="role-expand-content">
+          </div>
+        </details>
       </article>
 
-      <article class="role">
+      <article id="equisys" class="role">
+        <details class="role-expand">
+          <summary class="role-summary">
         <div class="role-header">
           <div class="role-left">
             <img src={`${base}logos/equisys.png`} alt="Equisys" class="role-logo" />
@@ -213,16 +233,24 @@ const base = import.meta.env.BASE_URL;
             <span>London</span>
           </div>
         </div>
+
         <ul>
           <li>Full development lifecycle of ERP software in .NET and C++ for desktop and web applications in a team of 8, reporting to senior leads and CTO</li>
           <li>Integration with Microsoft Office, SharePoint, Dynamics NAV, PDF and fax processing</li>
         </ul>
+
         <div class="tech-badges">
           <span data-tech="dotnet">.NET</span><span data-tech="cpp">C++</span><span data-tech="microsoft">MS Office</span><span data-tech="dotnet">Dynamics NAV</span><span data-tech="azure">Azure</span>
         </div>
+          </summary>
+          <div class="role-expand-content">
+          </div>
+        </details>
       </article>
 
-      <article class="role">
+      <article id="iminds" class="role">
+        <details class="role-expand">
+          <summary class="role-summary">
         <div class="role-header">
           <div class="role-left">
             <img src={`${base}logos/iminds.png`} alt="iMinds" class="role-logo" />
@@ -238,14 +266,20 @@ const base = import.meta.env.BASE_URL;
             <span>Ghent, Belgium</span>
           </div>
         </div>
+
         <ul>
           <li>Remote desktop protocol and network/bandwidth optimization</li>
           <li>Implementation of network tools for monitoring and load testing in C++</li>
           <li>Test execution scripting in Bash</li>
         </ul>
+
         <div class="tech-badges">
           <span data-tech="cpp">C++</span><span data-tech="unix">RFB</span><span data-tech="unix">Bash</span><span data-tech="perl">Perl</span><span data-tech="grafana">Zabbix</span>
         </div>
+          </summary>
+          <div class="role-expand-content">
+          </div>
+        </details>
       </article>
     </section>
 
@@ -402,6 +436,43 @@ const base = import.meta.env.BASE_URL;
 </Layout>
 
 <style>
+  .role-expand {
+    border: none;
+    padding: 0;
+  }
+
+  .role-summary {
+    list-style: none;
+    cursor: pointer;
+    display: block;
+  }
+
+  .role-summary::-webkit-details-marker { display: none; }
+  .role-summary::marker { display: none; content: ''; }
+
+  .role-expand-content {
+    margin-top: 0.75rem;
+    animation: fadeIn 0.2s ease;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+  }
+
+  .role-expand-content p {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .role-expand-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   .hero-title-row {
     display: flex;
     justify-content: space-between;
@@ -438,3 +509,34 @@ const base = import.meta.env.BASE_URL;
     font-weight: 600;
   }
 </style>
+
+<script>
+  // Collapse others when one opens
+  document.querySelectorAll('.role-expand').forEach(details => {
+    details.addEventListener('toggle', () => {
+      if (details.open) {
+        document.querySelectorAll('.role-expand').forEach(other => {
+          if (other !== details) other.open = false;
+        });
+        const id = details.closest('article')?.id;
+        if (id) history.replaceState(null, '', '#' + id);
+      } else {
+        history.replaceState(null, '', window.location.pathname);
+      }
+    });
+  });
+
+  // Auto-open and scroll to role if hash matches
+  function openFromHash() {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+    const article = document.getElementById(id);
+    if (!article) return;
+    const details = article.querySelector('.role-expand');
+    if (details) details.open = true;
+    article.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+</script>

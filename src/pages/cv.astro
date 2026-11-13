@@ -1,0 +1,286 @@
+---
+/* =====================================================================
+   EDIT THE CV HERE. Logos are files in public/logos/ (set `logo` to the
+   file name). Everything below the closing --- is layout.
+   ===================================================================== */
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const PDF = 'Sammy Deveille - Technical Lead - CV.pdf'; // generated into public/ by `npm run cv:pdf`
+
+const cv = {
+  name: 'Sammy Deveille',
+  role: 'Technical Lead',
+  contact: [
+    ['phone', '07585 954 288'],
+    ['mail', 'sammydeveille@gmail.com'],
+    ['home', 'Henlow, Bedfordshire'],
+  ],
+  profile:
+    'Technical lead with a track record of scaling teams, streamlining processes, and delivering secure cloud solutions aligned with business goals.',
+  leadership: [
+    ['Strategy & Vision', 'Owned technical roadmaps from early-stage prototype through enterprise scale. Led architecture decisions across cloud migrations, platform pivots and compliance programs.'],
+    ['People & Growth', 'Scaled teams from 2 to 10+, shaped hiring pipelines, and mentored engineers through to senior/lead roles. Built cross-functional collaboration across product, design and engineering.'],
+    ['Process & Delivery', 'Introduced Agile, TDD and documentation-first practices. Balanced short-term delivery with long-term architectural investment. Track engineering effectiveness through DORA metrics'],
+    ['Governance & Compliance', 'Led ISO 27001, GDPR and Cyber Essentials accreditation. Security-first mindset: least privilege by default, continuous assessment, risk-minimised architecture.'],
+    ['Culture & Mindset', 'Cultivated "no blame" environments that encourage experimentation, continuous learning and knowledge sharing. Data-driven decision-making to align engineering effort with business outcomes.'],
+  ],
+  technical: [
+    ['Cloud & IaC', ['AWS · Azure · Docker · K8S · Helm', 'Ansible · CloudFormation · Terraform']],
+    ['Application Development', ['NodeJS · TypeScript · NestJS', 'React · Angular · Next.JS', 'Python · .NET · C++ · Java']],
+    ['APIs', ['REST · GraphQL · WebSocket · gRPC']],
+    ['Data & Storage', ['MySQL · PostgreSQL · InfluxDB', 'Redis · S3']],
+    ['CI/CD & Security', ['GitHub Actions · Jenkins · CodeBuild', 'Trivy · OWASP ZAP · DefectDojo']],
+    ['Observability', ['CloudWatch · Grafana · Prometheus', 'NewRelic · Zabbix']],
+    ['Testing', ['Mocha · Playwright · Supertest', 'K6 · Jest · NUnit']],
+    ['Integration', ['Okta · OneLogin · Office365', 'Stripe · SalesForce · HubSpot', 'Zapier · Mapbox · Jitsi']],
+    ['AI / LLM', ['OpenRouter · LM Studio · LangChain']],
+  ],
+
+  /* One entry per page. A job that crosses the page break is split in two:
+     the second part has cont: true and no heading. */
+  pages: [
+    [
+      { title: 'Technical Lead', company: 'ASP Events', tagline: 'Event website provider', dates: 'Mar 24 - Present', sector: 'Event tech', place: 'London',
+        logo: 'asp.png',
+        bullets: [
+          'Strengthened network security posture and optimised infrastructure spend, reducing risks and costs',
+          'Implemented CI/CD pipelines with security scanning and deployment automation',
+          'Dockerized application layer for portability and consistency',
+          'Drove TDD adoption and test automation to raise code quality',
+          'Established performance benchmarking to identify and resolve bottlenecks',
+          'Led ColdFusion-to-Lucee migration, cutting licensing overhead',
+          'Asset compression for significant speed and cost reduction',
+          'Mentored team, fostering skill growth and continuous improvement',
+        ],
+        tags: ['React', 'NodeJS', 'Java', 'Lucee', 'Redis', 'MySQL', 'AWS', 'Docker', 'Ansible', 'Terraform', 'Grafana', 'Prometheus'] },
+      { title: 'Head of Engineering', company: 'Springpod', tagline: 'Career guidance e-learning for students', dates: 'Apr 2023 - Jan 2024', sector: 'ELearning', place: 'London',
+        logo: 'springpod.png',
+        bullets: [
+          'Adopted Scrum in a team of 6 to align with company goals',
+          'Product delivery: content delivery, indexing and maintenance',
+          'Architected SSO identity federation for UCAS partnership',
+          'Streamlined documentation and processes',
+        ],
+        tags: ['React', 'NodeJS', 'Next.JS', 'NestJS', 'GraphQL', 'gRPC', 'AWS', 'Docker', 'K8S'] },
+      { title: 'Chief Technology Officer', company: 'Glisser', tagline: 'Event tech powering real-time interaction', dates: 'Apr 2015 - Jan 2023', sector: 'Event tech', place: 'London',
+        logo: 'glisser.png',
+        bullets: [
+          'Joined as employee #3, evolved prototype into market-ready product through multiple funding rounds, securing Big Four clients',
+          'Defined and executed technology roadmap from early prototype to enterprise-grade platform, including COVID-era pivot to virtual/hybrid',
+          'Engineered platform for multi-million concurrent WebSocket connections',
+        ] },
+    ],
+    [
+      { cont: true,
+        bullets: [
+          'Designed real-time messaging layer for polling, Q&A, slide sync and analytics',
+          'Migrated cloud infrastructure for cost and performance',
+          'Delivered data integration solutions across multiple external APIs and providers',
+          'Scaled engineering from 2 to 10, shaping hiring, onboarding and mentoring engineers through to senior/lead roles',
+          'Led ISO 27001 certification and GDPR compliance',
+          'Enforced OWASP standards with continuous security assessments toward SOC 2 compliance',
+        ],
+        tags: ['React', 'NodeJS', 'WebSocket', '.NET', 'Python', 'Angular', 'PHP', 'RabbitMQ', 'Redis', 'MySQL', 'Docker', 'Terraform', 'Azure', 'AWS', 'ELK'] },
+      { title: 'Web Developer', company: 'Good Elearning', tagline: 'Online accredited business and IT courses', dates: 'Jul 2013 - Apr 2015', sector: 'ELearning', place: 'London',
+        logo: 'good-elearning.png',
+        bullets: [
+          'Led development and rollout of a bespoke LMS reporting directly to the CTO',
+          'Content tracking, organisational user management, CMS and reporting (HTML5, PDF, Excel)',
+          'Enforced TDD adoption, achieving 90% test coverage',
+        ],
+        tags: ['AngularJS', '.NET', 'SQL', 'EF', 'Azure', 'NUnit'] },
+      { title: 'Software Developer', company: 'Equisys', tagline: 'Document and expense software', dates: 'Jun 2010 - Jul 2013', sector: 'Office ERP', place: 'London',
+        logo: 'equisys.png',
+        bullets: [
+          'Full development lifecycle of ERP software in .NET and C++ for desktop and web applications in a team of 8',
+          'Integration with MS Office, SharePoint, Dynamics NAV',
+        ],
+        tags: ['.NET', 'C++', 'Office', 'SharePoint', 'Dynamics', 'SQL', 'Azure'] },
+      { title: 'Research Software Engineer', company: 'iMinds', tagline: 'Thin client european research project', dates: 'Oct 2008 - Jun 2010', sector: 'Research', place: 'Ghent, Belgium',
+        logo: 'iminds.png', last: true,
+        bullets: [
+          'Implemented tooling for remote desktop protocol and network/bandwidth optimization',
+          'Network monitoring and load testing in C++ and Bash',
+        ],
+        tags: ['C++', 'Bash', 'Perl', 'RFB', 'Zabbix'] },
+    ],
+  ],
+  trivia: [['French native', 'UK settled status'], ['Musician for live and studio'], ['Cyclist']],
+  education: [
+    { degree: 'Masters', field: 'Computer Sciences', school: ['Universite Polytechnique', 'Hauts de France'], dates: '2005 - 2008', place: 'Valenciennes, France', logo: 'uphf.png' },
+    { degree: 'HND', field: 'Computer Sciences', school: ['Institut Universitaire de', 'Technologie'], dates: '2003 - 2005', place: 'Valenciennes, France', logo: 'iut.png' },
+  ],
+};
+
+const tagColors: Record<string, string> = {
+  React: '#3fd8f5', NodeJS: '#8cd444', Java: '#4f7ea3', Lucee: '#1a6fa8', Redis: '#d62f3a', MySQL: '#14598a',
+  AWS: '#f5a030', Docker: '#4fb6ee', Ansible: '#d8343a', Terraform: '#6b3fd1', Grafana: '#f08a3c', Prometheus: '#e8754d',
+  'Next.JS': '#000', NestJS: '#e0234e', GraphQL: '#e10098', gRPC: '#1fbfa8', K8S: '#2f5fd0', WebSocket: '#ff1f9a',
+  '.NET': '#5b2fd1', Python: '#4b86b4', Angular: '#e8505b', PHP: '#8892bf', RabbitMQ: '#f26a1b', Azure: '#2a86d6',
+  ELK: '#f7b92c', AngularJS: '#e8505b', SQL: '#1f6fe0', EF: '#6a2a7a', NUnit: '#0f6b1d', 'C++': '#5a7fc0',
+  Office: '#e8321e', SharePoint: '#1f8ae0', Dynamics: '#f5a014', Bash: '#3d4a52', Perl: '#1b8ab5', RFB: '#4a35a0', Zabbix: '#d9262c',
+};
+const icons: Record<string, string> = {
+  phone: 'M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z',
+  mail: 'M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z',
+  home: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z',
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>{cv.name} - {cv.role} - CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="toolbar">
+      <a class="btn alt" href="/">← Back</a>
+      <a class="btn" href={`${base}${PDF}`} download>Download PDF</a>
+      <button class="btn alt" onclick="window.print()">Print</button>
+    </div>
+
+    {cv.pages.map((jobs, i) => (
+      <div class="page">
+        <h1>{cv.name}</h1>
+        <div class="role">{cv.role}</div>
+
+        <div class="cols" style={`margin-top:${i === 0 ? 42 : 36}px`}>
+          <div class="side">
+            {i === 0 ? (
+              <>
+                <section class="contact">
+                  <h2>Contact</h2>
+                  {cv.contact.map(([icon, text]) => (
+                    <div><svg viewBox="0 0 24 24"><path d={icons[icon]} /></svg><span>{text}</span></div>
+                  ))}
+                </section>
+                <h2>Leadership</h2>
+                {cv.leadership.map(([h, p]) => <section><h3>{h}</h3><p>{p}</p></section>)}
+              </>
+            ) : (
+              <div class="tech">
+                <h2>Technical</h2>
+                {cv.technical.map(([h, lines]) => (
+                  <section><h3>{h}</h3><p>{lines.map((l, k) => <>{k > 0 && <br />}{l}</>)}</p></section>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div class={i === 1 ? 'main second' : 'main'}>
+            {i === 0 && (
+              <>
+                <h2>Profile</h2>
+                <p class="profile">{cv.profile}</p>
+                <h2 class="exp">Experience</h2>
+              </>
+            )}
+            {jobs.map((j) => (
+              <div class:list={['job', { cont: j.cont, last: j.last }]}>
+                {!j.cont && <div class="logo"><img src={`${base}logos/${j.logo}`} alt={j.company} /></div>}
+                {!j.cont && (
+                  <>
+                    <div class="head">
+                      <div><div class="title">{j.title}</div><div class="company">{j.company}</div></div>
+                      <div class="meta">{j.dates}<br />{j.sector}<br />{j.place}</div>
+                    </div>
+                    <div class="tagline">{j.tagline}</div>
+                  </>
+                )}
+                <ul>{j.bullets.map((b) => <li>{b}</li>)}</ul>
+                {j.tags && (
+                  <div class="tags">{j.tags.map((t) => <span class="tag" style={`background:${tagColors[t] ?? '#888'}`}>{t}</span>)}</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {i === 1 && (
+          <div class="bottom">
+            <div class="trivia">
+              <h2>Trivia</h2>
+              <ul>{cv.trivia.map(([a, b]) => <li>{a}{b && <small>{b}</small>}</li>)}</ul>
+            </div>
+            <div class="edu">
+              <h2>Education</h2>
+              {cv.education.map((e) => (
+                <div class="item">
+                  <div class="logo"><img src={`${base}logos/${e.logo}`} alt={e.school.join(' ')} /></div>
+                  <div>
+                    <div class="deg">{e.degree}<br />{e.field}</div>
+                    <div class="sch">{e.school.map((l, k) => <>{k > 0 && <br />}{l}</>)}</div>
+                    <div class="when">{e.dates}<br />{e.place}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    ))}
+  </body>
+</html>
+
+<style is:global>
+  @page { size: A4; margin: 0; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; background: #0f0f0f; font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif; color: #555; font-size: 11.5px; line-height: 1.45; }
+
+  .toolbar { position: fixed; top: 12px; right: 16px; display: flex; gap: 8px; z-index: 10; }
+  .btn { font: 600 12px 'Montserrat', Arial, sans-serif; background: #e8e8e8; color: #111; border: 0; border-radius: 6px; padding: 8px 14px; cursor: pointer; text-decoration: none; }
+  .btn.alt { background: #2a2a2a; color: #e8e8e8; }
+
+  .page { width: 210mm; height: 297mm; margin: 16px auto; background: #fff; padding: 34px 40px 30px; position: relative; overflow: hidden; break-after: page; box-shadow: 0 2px 12px rgba(0,0,0,.18); }
+  .page:last-child { break-after: auto; }
+  @media print { body { background: #fff; } .page { margin: 0; box-shadow: none; } .toolbar { display: none; } }
+
+  .page h1 { font-size: 50px; font-weight: 800; color: #000; margin: 0; letter-spacing: -.5px; line-height: 1.1; }
+  .page .role { font-size: 24px; font-weight: 600; color: #777; margin: 4px 0 0; }
+  .page h2 { font-size: 20px; font-weight: 600; color: #000; margin: 0 0 14px; line-height: 1.3; }
+  .page h3 { font-size: 14px; font-weight: 600; color: #555; margin: 0 0 4px; line-height: 1.3; }
+  .page p { margin: 0; }
+  .page ul { margin: 0; padding: 0; list-style: none; }
+
+  .cols { display: grid; grid-template-columns: 262px 1fr; column-gap: 48px; }
+  .side section { margin-bottom: 28px; }
+  .side p { color: #777; }
+  .tech section { margin-bottom: 17px; }
+  .contact div { display: flex; gap: 12px; align-items: center; font-size: 13px; color: #555; margin-bottom: 4px; }
+  .contact svg { width: 17px; height: 17px; fill: #555; flex: none; }
+  .profile { text-align: justify; font-size: 13px; color: #777; }
+  .page h2.exp { margin-top: 34px; }
+  .main.second { padding-top: 34px; }
+
+  .job { position: relative; padding-left: 58px; margin-bottom: 20px; }
+  .job::before { content: ''; position: absolute; left: 19px; top: 44px; bottom: -14px; width: 1px; background: #333; }
+  .job.last::before { bottom: 6px; }
+  .job.cont::before { top: 0; }
+  .logo { width: 38px; height: 38px; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.35); overflow: hidden; flex: none; }
+  .logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .job .logo { position: absolute; left: 0; top: 0; }
+  .head { display: flex; justify-content: space-between; gap: 12px; }
+  .title { font-size: 18px; font-weight: 600; color: #555; line-height: 1.15; }
+  .company { font-size: 15px; color: #555; }
+  .tagline { font-style: italic; font-size: 11px; color: #777; margin: 2px 0 6px; }
+  .meta { text-align: right; font-size: 11px; color: #999; line-height: 1.35; white-space: nowrap; }
+  .page li { position: relative; padding-left: 16px; margin-bottom: 3px; font-size: 12.5px; color: #777; }
+  .page li::before { content: ''; position: absolute; left: 2px; top: .55em; width: 6px; height: 6px; border-radius: 50%; background: #888; }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .tag { font-size: 8.5px; font-weight: 700; color: #fff; border-radius: 4px; padding: 1px 7px; line-height: 1.5; }
+
+  .bottom { display: grid; grid-template-columns: 262px 1fr; column-gap: 48px; position: absolute; left: 40px; right: 40px; bottom: 30px; }
+  .edu { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .edu h2 { grid-column: 1 / -1; margin: 0; }
+  .edu .item { display: flex; gap: 10px; }
+  .edu .deg { color: #555; font-weight: 600; font-size: 14px; line-height: 1.2; }
+  .edu .sch { font-weight: 600; font-size: 11.5px; color: #555; line-height: 1.3; }
+  .edu .when { font-size: 10px; color: #999; margin-top: 4px; }
+  .trivia li { color: #555; font-size: 12.5px; margin-bottom: 9px; }
+  .trivia li::before { background: none; border: 2px solid #555; width: 5px; height: 5px; }
+  .trivia small { display: block; color: #777; font-size: 11.5px; }
+</style>
