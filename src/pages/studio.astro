@@ -32,7 +32,7 @@ function formatYear(date: string): string {
 
     <section id="projects" class="timeline">
       {projects.map((project, index) => (
-        <article class={`timeline-entry${index === projects.length - 1 ? ' last' : ''}`} data-type={project.type}>
+        <article id={project.slug} class={`timeline-entry${index === projects.length - 1 ? ' last' : ''}`} data-type={project.type}>
           <div class="timeline-left">
             <span class="timeline-date">{formatYear(project.dateStart)}</span>
           </div>
@@ -657,6 +657,35 @@ function formatYear(date: string): string {
 </style>
 
 <script>
+  // Auto-open and scroll to project if hash matches
+  function openFromHash() {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+    const article = document.getElementById(id);
+    if (!article) return;
+    const details = article.querySelector('.project-details');
+    if (details) details.open = true;
+    article.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+
+  // Collapse others when one opens
+  document.querySelectorAll('.project-details').forEach(details => {
+    details.addEventListener('toggle', () => {
+      if (details.open) {
+        document.querySelectorAll('.project-details').forEach(other => {
+          if (other !== details) other.open = false;
+        });
+        const id = details.closest('article')?.id;
+        if (id) history.replaceState(null, '', '#' + id);
+      } else {
+        history.replaceState(null, '', window.location.pathname);
+      }
+    });
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.filter-btn');
     const entries = document.querySelectorAll('.timeline-entry');

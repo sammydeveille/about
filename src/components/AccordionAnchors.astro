@@ -1,0 +1,34 @@
+---
+interface Props {
+  selector: string; // CSS selector for the <details> elements
+}
+const { selector } = Astro.props;
+---
+<script define:vars={{ selector }}>
+  const allDetails = () => document.querySelectorAll(selector);
+
+  function openFromHash() {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+    const article = document.getElementById(id);
+    if (!article) return;
+    const details = article.querySelector(selector);
+    if (details) details.open = true;
+    article.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  allDetails().forEach(details => {
+    details.addEventListener('toggle', () => {
+      if (details.open) {
+        allDetails().forEach(other => { if (other !== details) other.open = false; });
+        const id = details.closest('article')?.id;
+        if (id) history.replaceState(null, '', '#' + id);
+      } else {
+        history.replaceState(null, '', window.location.pathname);
+      }
+    });
+  });
+
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+</script>

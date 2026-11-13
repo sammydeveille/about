@@ -30,8 +30,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Playwright browser
+        run: npx playwright install chromium --with-deps
+
       - name: Build
         run: npm run build
+
+      - name: Generate CV PDF
+        run: |
+          npx http-server dist -p 4321 --silent &
+          npx wait-on http://localhost:4321/cv/
+          CV_URL=http://localhost:4321/cv node scripts/cv-pdf.mjs
+          cp "public/Sammy Deveille - Technical Lead - CV.pdf" "dist/Sammy Deveille - Technical Lead - CV.pdf"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

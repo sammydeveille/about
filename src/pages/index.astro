@@ -28,7 +28,7 @@ const base = import.meta.env.BASE_URL;
         <a href="mailto:sammydeveille@gmail.com" aria-label="Email">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </a>
-        <a href={`${base}Sammy Deveille - Technical Lead - CV.pdf`} download aria-label="Download CV">
+        <a href="/cv" aria-label="View CV">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
         </a>
       </nav>
@@ -37,7 +37,9 @@ const base = import.meta.env.BASE_URL;
     <section id="experience">
       <h2>Experience</h2>
 
-      <article class="role">
+      <article id="asp" class="role">
+        <details class="role-expand">
+          <summary class="role-summary">
         <div class="role-header">
           <div class="role-left">
             <img src={`${base}logos/asp.png`} alt="ASP Events" class="role-logo" />
@@ -61,7 +63,6 @@ const base = import.meta.env.BASE_URL;
           <li>Implemented CI/CD pipelines with integrated security scanning, vulnerability tracking and automated deployment</li>
           <li>Optimized infrastructure spend, yielding annual savings</li>
         </ul>
-
         <h4>Delivery & Quality</h4>
         <ul>
           <li>Transitioned legacy ColdFusion solution to Lucee open source</li>
@@ -70,7 +71,6 @@ const base = import.meta.env.BASE_URL;
           <li>Stress and load testing for performance benchmarking and optimisation</li>
           <li>Introduced agentic development workflows for automated testing and documentation generation</li>
         </ul>
-
         <h4>Team & Culture</h4>
         <ul>
           <li>Transitioned team to adopt TDD and documentation-first practices for continuous improvement</li>
@@ -80,9 +80,20 @@ const base = import.meta.env.BASE_URL;
         <div class="tech-badges">
           <span data-tech="react">React</span><span data-tech="nodejs">NodeJS</span><span data-tech="nodejs">Lucee</span><span data-tech="aws">AWS</span><span data-tech="ansible">Ansible</span><span data-tech="terraform">Terraform</span><span data-tech="grafana">Grafana</span><span data-tech="grafana">Prometheus</span><span data-tech="mysql">MySQL</span><span data-tech="dynamodb">DynamoDB</span><span data-tech="aws">ElastiCache</span><span data-tech="aws">RDS</span>
         </div>
+          </summary>
+          <div class="role-expand-content">
+            <p>Joined ASP Events as Technical Lead to modernise a legacy event website platform serving hundreds of clients across the UK events industry. The stack was built on ColdFusion — a technology with a shrinking talent pool and mounting maintenance overhead — and the infrastructure had grown organically without formal security or deployment practices in place.</p>
+            <p>The first priority was stabilising the platform. I introduced Docker to containerise the application layer, eliminating environment drift between development and production and making deployments predictable. Alongside this, I built out CI/CD pipelines with integrated security scanning using Trivy and OWASP ZAP, feeding findings into DefectDojo for tracked remediation. WAF rules were configured to filter malicious traffic patterns and protect against common web threats.</p>
+            <p>On the infrastructure side, I audited cloud spend and restructured resource allocation — rightsizing instances, introducing caching with ElastiCache, and moving appropriate workloads to serverless — resulting in meaningful annual cost savings without sacrificing performance.</p>
+            <p>The longer-term migration from ColdFusion to Lucee (an open-source CFML engine) reduced licensing costs and opened the door to a more sustainable modernisation path. I also built a video compression pipeline to reduce storage and delivery costs for event media assets.</p>
+            <p>Culturally, I introduced TDD and documentation-first practices to a team that had previously operated without formal engineering standards. This included pairing sessions, code review processes, and a shift toward agentic development workflows for automated test and documentation generation.</p>
+          </div>
+        </details>
       </article>
 
-      <article class="role">
+      <article id="springpod" class="role">
+        <details class="role-expand">
+          <summary class="role-summary">
         <div class="role-header">
           <div class="role-left">
             <img src={`${base}logos/springpod.png`} alt="Springpod" class="role-logo" />
@@ -98,23 +109,34 @@ const base = import.meta.env.BASE_URL;
             <span>London</span>
           </div>
         </div>
+
         <h4>Delivery</h4>
         <ul>
           <li>Product feature implementation including content delivery, identity federation, maintenance and support</li>
-          <li>Architected SSO identity federation for UCAS partnership"</li>
+          <li>Architected SSO identity federation for UCAS partnership</li>
         </ul>
-
         <h4>Team & Culture</h4>
         <ul>
           <li>Introduced Scrum in a team of 6 to align effort with company strategy</li>
           <li>Streamlined documentation and processes across teams</li>
         </ul>
+
         <div class="tech-badges">
           <span data-tech="nodejs">NodeJS</span><span data-tech="graphql">GraphQL</span><span data-tech="react">React</span><span data-tech="nextjs">Next.JS</span><span data-tech="aws">AWS</span><span data-tech="docker">Docker</span><span data-tech="kubernetes">K8S</span><span data-tech="grpc">gRPC</span><span data-tech="algolia">Algolia</span>
         </div>
+          </summary>
+          <div class="role-expand-content">
+            <p>Springpod is a career guidance platform helping students explore work experience and university pathways. I joined as Head of Engineering to bring structure to a growing team and align engineering delivery more closely with company strategy.</p>
+            <p>The most technically significant project during my tenure was architecting an SSO identity federation layer for a partnership with UCAS — the UK’s university admissions service. This required designing a secure, standards-compliant integration using OAuth 2.0 and OpenID Connect, enabling seamless single sign-on between the two platforms without compromising user data boundaries.</p>
+            <p>On the process side, the team was operating without a consistent delivery framework. I introduced Scrum — sprint planning, retrospectives, and a structured backlog — which gave the team a shared rhythm and made progress visible to stakeholders. Documentation had been inconsistent across teams; I standardised this with lightweight runbooks, ADRs and onboarding guides.</p>
+            <p>The stack was a modern Node/GraphQL/React architecture deployed on AWS with Kubernetes, and I worked closely with the team on feature delivery across content, search (Algolia) and platform reliability.</p>
+          </div>
+        </details>
       </article>
 
-      <article class="role">
+      <article id="glisser" class="role">
+        <details class="role-expand">
+          <summary class="role-summary">
         <div class="role-header">
           <div class="role-left">
             <img src={`${base}logos/glisser.png`} alt="Glisser" class="role-logo" />
@@ -136,25 +158,21 @@ const base = import.meta.env.BASE_URL;
           <li>Joined as employee #3, built prototype into market-ready product through various seeds, securing Big Four clients</li>
           <li>Defined and executed technology roadmap from early prototype to enterprise-grade platform, including COVID-era pivot to virtual/hybrid</li>
         </ul>
-
         <h4>Architecture & Scale</h4>
         <ul>
           <li>Engineered platform for multi-million concurrent WebSocket connections</li>
           <li>Migrated cloud infrastructure for cost and performance</li>
           <li>Designed real-time messaging layer for polling, Q&A, slide sync and analytics</li>
         </ul>
-
         <h4>Team & Culture</h4>
         <ul>
           <li>Scaled engineering from 2 to 10 (company to 30+), shaping hiring, onboarding and mentoring engineers through to senior/lead roles</li>
         </ul>
-
         <h4>Security & Compliance</h4>
         <ul>
           <li>Led ISO 27001 certification and GDPR compliance</li>
           <li>Enforced OWASP standards with continuous security assessments toward SOC 2 compliance</li>
         </ul>
-
         <h4>DevOps & Infrastructure</h4>
         <ul>
           <li>Infrastructure as Code with Terraform</li>
@@ -163,14 +181,22 @@ const base = import.meta.env.BASE_URL;
         </ul>
 
         <div class="tech-badges">
-          <span data-tech="react">React</span><span data-tech="angular">Angular</span><span data-tech="nodejs">NodeJS</span><span data-tech="dotnet">.NET</span><span data-tech="php">PHP</span><span data-tech="python">Python</span><span data-tech="websocket">WebSocket</span><span data-tech="mysql">MySQL</span><span data-tech="redis">Redis</span>
+          <span data-tech="react">React</span><span data-tech="angular">Angular</span><span data-tech="nodejs">NodeJS</span><span data-tech="dotnet">.NET</span><span data-tech="php">PHP</span><span data-tech="python">Python</span><span data-tech="websocket">WebSocket</span><span data-tech="mysql">MySQL</span><span data-tech="redis">Redis</span><span data-tech="aws">AWS</span><span data-tech="azure">Azure</span><span data-tech="docker">Docker</span><span data-tech="rabbitmq">RabbitMQ</span><span data-tech="elk">ELK</span>
         </div>
-        <div class="tech-badges">
-          <span data-tech="aws">AWS</span><span data-tech="azure">Azure</span><span data-tech="docker">Docker</span><span data-tech="rabbitmq">RabbitMQ</span><span data-tech="elk">ELK</span>
-        </div>
+          </summary>
+          <div class="role-expand-content">
+            <p>I joined Glisser as employee #3 when it was a prototype running on a single server. Over eight years I grew with the company through multiple funding rounds, built and led the engineering team, and shaped the platform from its earliest form into an enterprise-grade product used by global organisations including Big Four consultancies, financial institutions and pharmaceutical companies.</p>
+            <p>The core technical challenge was real-time scale. Glisser's value proposition depended on live audience interaction — polling, Q&A, slide sync — working reliably for thousands of concurrent attendees per event, across many simultaneous events. I designed and evolved the WebSocket messaging architecture to handle multi-million concurrent connections, with a custom pub/sub layer backed by Redis and RabbitMQ. When Azure no longer met our cost and performance requirements, I led the full cloud migration to AWS, re-architecting services around ECS, RDS, ElastiCache and CloudFront.</p>
+            <p>When COVID hit in March 2020, the events industry collapsed overnight. Within weeks I led a pivot to a fully virtual and hybrid event platform — integrating video conferencing, virtual networking and on-demand content delivery. This pivot kept the company alive and opened new market segments that became a core part of the product.</p>
+            <p>On the team side, I scaled engineering from 2 to 10 engineers, establishing hiring processes, onboarding programmes and career progression frameworks. I introduced Agile practices, code review culture and documentation standards. Several engineers I hired and mentored progressed to senior and lead roles.</p>
+            <p>Security and compliance became a major focus as we moved upmarket. I led the ISO 27001 certification process end-to-end — scoping, gap analysis, policy authoring, internal audits and external certification. I also drove GDPR compliance across the platform and established continuous OWASP-aligned security assessment practices as groundwork toward SOC 2.</p>
+          </div>
+        </details>
       </article>
 
-      <article class="role">
+      <article id="good-elearning" class="role">
+        <details class="role-expand">
+          <summary class="role-summary">
         <div class="role-header">
           <div class="role-left">
             <img src={`${base}logos/good-elearning.png`} alt="Good eLearning" class="role-logo" />
@@ -186,18 +212,30 @@ const base = import.meta.env.BASE_URL;
             <span>London</span>
           </div>
         </div>
+
         <ul>
           <li>Led development and rollout of a bespoke LMS in Angular & .NET, reporting directly to the CTO</li>
           <li>Content tracking (SCORM), organisational user management, CMS and reporting (HTML5, PDF, Excel)</li>
           <li>Dashboard and analytics visualisation</li>
           <li>Enforced TDD practices across the full stack, achieving 90% unit test coverage</li>
         </ul>
+
         <div class="tech-badges">
           <span data-tech="dotnet">.NET</span><span data-tech="dotnet">EF</span><span data-tech="angular">AngularJS</span><span data-tech="sql">SQL</span><span data-tech="nunit">NUnit</span><span data-tech="azure">Azure</span>
         </div>
+          </summary>
+          <div class="role-expand-content">
+            <p>Good eLearning produced accredited online courses in enterprise architecture and IT service management — ITIL, TOGAF, Prince2 — for a global professional audience. I joined as the sole developer responsible for building a bespoke Learning Management System from scratch, reporting directly to the CTO.</p>
+            <p>The LMS was built in AngularJS and .NET, covering the full learner journey: course enrolment, SCORM-compliant content tracking, progress reporting, certificate generation and organisational user management for corporate clients. I also built a CMS for the content team to manage course materials, and a reporting dashboard with export to PDF and Excel for client administrators.</p>
+            <p>Testing discipline was a priority from the start. I enforced TDD across the full stack using NUnit on the backend and Jasmine on the frontend, achieving 90% unit test coverage — a standard that made the codebase significantly easier to maintain and extend as requirements evolved.</p>
+            <p>This role gave me my first experience owning a product end-to-end: from architecture decisions through to deployment on Azure, with direct accountability to the business.</p>
+          </div>
+        </details>
       </article>
 
-      <article class="role">
+      <article id="equisys" class="role">
+        <details class="role-expand">
+          <summary class="role-summary">
         <div class="role-header">
           <div class="role-left">
             <img src={`${base}logos/equisys.png`} alt="Equisys" class="role-logo" />
@@ -213,16 +251,27 @@ const base = import.meta.env.BASE_URL;
             <span>London</span>
           </div>
         </div>
+
         <ul>
           <li>Full development lifecycle of ERP software in .NET and C++ for desktop and web applications in a team of 8, reporting to senior leads and CTO</li>
           <li>Integration with Microsoft Office, SharePoint, Dynamics NAV, PDF and fax processing</li>
         </ul>
+
         <div class="tech-badges">
           <span data-tech="dotnet">.NET</span><span data-tech="cpp">C++</span><span data-tech="microsoft">MS Office</span><span data-tech="dotnet">Dynamics NAV</span><span data-tech="azure">Azure</span>
         </div>
+          </summary>
+          <div class="role-expand-content">
+            <p>Equisys makes Zetadocs, a document management and expense processing suite that integrates deeply with Microsoft Dynamics NAV. I joined as a graduate software developer and spent three years working across the full product lifecycle in a team of eight engineers.</p>
+            <p>The work was primarily in .NET and C++, spanning both desktop and web application surfaces. Key areas included document capture and routing, PDF generation, fax processing, and deep integration with Microsoft Office and SharePoint. I also worked on the Dynamics NAV connector, which required understanding ERP data models and building reliable two-way sync between the document layer and the accounting system.</p>
+            <p>Working in a structured team with senior leads and a CTO gave me strong foundations in software engineering discipline — code reviews, structured testing, release management and working to a defined specification. It was my first exposure to the full commercial software development lifecycle, from requirements through to shipped product.</p>
+          </div>
+        </details>
       </article>
 
-      <article class="role">
+      <article id="iminds" class="role">
+        <details class="role-expand">
+          <summary class="role-summary">
         <div class="role-header">
           <div class="role-left">
             <img src={`${base}logos/iminds.png`} alt="iMinds" class="role-logo" />
@@ -238,14 +287,24 @@ const base = import.meta.env.BASE_URL;
             <span>Ghent, Belgium</span>
           </div>
         </div>
+
         <ul>
           <li>Remote desktop protocol and network/bandwidth optimization</li>
           <li>Implementation of network tools for monitoring and load testing in C++</li>
           <li>Test execution scripting in Bash</li>
         </ul>
+
         <div class="tech-badges">
           <span data-tech="cpp">C++</span><span data-tech="unix">RFB</span><span data-tech="unix">Bash</span><span data-tech="perl">Perl</span><span data-tech="grafana">Zabbix</span>
         </div>
+          </summary>
+          <div class="role-expand-content">
+            <p>iMinds (now imec) was a Flemish research institute running applied technology projects in partnership with industry. I worked on MobiThin, a European research project exploring thin client architecture for mobile devices — the idea being to offload computation to a server and stream the interface to low-powered clients over a network.</p>
+            <p>My work focused on the Remote Framebuffer (RFB) protocol — the protocol underlying VNC — and optimising it for constrained mobile network conditions. This involved implementing bandwidth-aware encoding strategies in C++, measuring the impact of different compression and delta-encoding approaches on perceived responsiveness under varying network conditions.</p>
+            <p>I also built network monitoring and load testing tooling in C++ and Bash, and used Zabbix for infrastructure observability across the test environment. The research context meant working with academic rigour — documenting methodology, running controlled experiments and contributing to project deliverables for the EU funding body.</p>
+            <p>This was my first professional role after graduating, and it gave me a deep grounding in low-level systems programming, network protocols and performance measurement — foundations that have informed my approach to infrastructure and observability ever since.</p>
+          </div>
+        </details>
       </article>
     </section>
 
@@ -402,6 +461,43 @@ const base = import.meta.env.BASE_URL;
 </Layout>
 
 <style>
+  .role-expand {
+    border: none;
+    padding: 0;
+  }
+
+  .role-summary {
+    list-style: none;
+    cursor: pointer;
+    display: block;
+  }
+
+  .role-summary::-webkit-details-marker { display: none; }
+  .role-summary::marker { display: none; content: ''; }
+
+  .role-expand-content {
+    margin-top: 0.75rem;
+    animation: fadeIn 0.2s ease;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+  }
+
+  .role-expand-content p {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .role-expand-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   .hero-title-row {
     display: flex;
     justify-content: space-between;
@@ -438,3 +534,34 @@ const base = import.meta.env.BASE_URL;
     font-weight: 600;
   }
 </style>
+
+<script>
+  // Collapse others when one opens
+  document.querySelectorAll('.role-expand').forEach(details => {
+    details.addEventListener('toggle', () => {
+      if (details.open) {
+        document.querySelectorAll('.role-expand').forEach(other => {
+          if (other !== details) other.open = false;
+        });
+        const id = details.closest('article')?.id;
+        if (id) history.replaceState(null, '', '#' + id);
+      } else {
+        history.replaceState(null, '', window.location.pathname);
+      }
+    });
+  });
+
+  // Auto-open and scroll to role if hash matches
+  function openFromHash() {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+    const article = document.getElementById(id);
+    if (!article) return;
+    const details = article.querySelector('.role-expand');
+    if (details) details.open = true;
+    article.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+</script>
