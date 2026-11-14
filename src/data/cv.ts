@@ -80,7 +80,7 @@ export const cv = {
       { title: 'Web Developer', company: 'Good Elearning', tagline: 'Online accredited business and IT courses', dates: 'Jul 2013 - Apr 2015', sector: 'ELearning', place: 'London',
         logo: 'good-elearning.png',
         bullets: [
-          'Led development and rollout of a bespoke LMS reporting directly to the CTO',
+          'Built the academy web platform (LMS) for accredited ITIL, PRINCE2 and TOGAF courses, reporting directly to the CTO',
           'Content tracking, organisational user management, CMS and reporting (HTML5, PDF, Excel)',
           'Enforced TDD adoption, achieving 90% test coverage',
         ],
@@ -88,15 +88,15 @@ export const cv = {
       { title: 'Software Developer', company: 'Equisys', tagline: 'Document and expense software', dates: 'Jun 2010 - Jul 2013', sector: 'Office ERP', place: 'London',
         logo: 'equisys.png',
         bullets: [
-          'Full development lifecycle of ERP software in .NET and C++ for desktop and web applications in a team of 8',
-          'Integration with MS Office, SharePoint, Dynamics NAV',
+          'Full development lifecycle of ERP document and expense software (Zetadocs) in .NET and C++ for desktop and web, in a team of 8',
+          'Built SharePoint filing and approved-expense export into Dynamics NAV',
         ],
         tags: ['.NET', 'C++', 'Office', 'SharePoint', 'Dynamics', 'SQL', 'Azure'] },
-      { title: 'Research Software Engineer', company: 'iMinds', tagline: 'Thin client european research project', dates: 'Oct 2008 - Jun 2010', sector: 'Research', place: 'Ghent, Belgium',
+      { title: 'Research Software Engineer', company: 'iMinds', tagline: 'EU research project on mobile thin clients (MobiThin)', dates: 'Oct 2008 - Jun 2010', sector: 'Research', place: 'Ghent, Belgium',
         logo: 'iminds.png', last: true,
         bullets: [
-          'Implemented tooling for remote desktop protocol and network/bandwidth optimization',
-          'Network monitoring and load testing in C++ and Bash',
+          'Implemented RFB traffic replay tooling and load-testing suites for remote desktop thin clients',
+          'Took part in building custom observability solutions with Zabbix, including network monitoring',
         ],
         tags: ['C++', 'Bash', 'Perl', 'RFB', 'Zabbix'] },
     ],
@@ -125,11 +125,10 @@ export type Experience = {
 /* Shared leadership copy. Each profile can replace its own block below
    without touching the experience. */
 const leadershipBase: Leadership = [
-  ['Strategy & Vision', 'Owned technical roadmaps from early-stage prototype through enterprise scale. Led architecture decisions across cloud migrations, platform pivots and compliance programs.'],
-  ['People & Growth', 'Scaled teams from 2 to 10+, shaped hiring pipelines, and mentored engineers through to senior/lead roles. Built cross-functional collaboration across product, design and engineering.'],
-  ['Process & Delivery', 'Introduced Agile, TDD and documentation-first practices. Balanced short-term delivery with long-term architectural investment. Track engineering effectiveness through DORA metrics.'],
-  ['Governance & Compliance', 'Led ISO 27001, GDPR and Cyber Essentials accreditation. Security-first mindset: least privilege by default, continuous assessment, risk-minimised architecture.'],
-  ['Culture & Mindset', 'Cultivated "no blame" environments that encourage experimentation, continuous learning and knowledge sharing. Data-driven decision-making to align engineering effort with business outcomes.'],
+  ['Strategy & Architecture', 'Owned technical roadmaps and OKRs from prototype to enterprise scale. Documented key decisions as ADRs across cloud migrations and platform pivots, with FinOps cost control.'],
+  ['People & Culture', 'Scaled teams from 2 to 10 through structured hiring, career frameworks, 1:1s and performance reviews. Built blameless, data-driven teams with postmortem-led incident management.'],
+  ['Delivery & Process', 'Introduced Scrum, TDD and trunk-based development, balancing delivery with technical debt. Measured with DORA (deployment frequency, lead time, change failure rate, time to restore) and SLOs.'],
+  ['Governance & Security', 'Led ISO 27001, GDPR, Cyber Essentials and SOC 2 work, applying OWASP and DevSecOps practices. Least-privilege, continuously assessed architecture.'],
 ];
 
 const profileBase =

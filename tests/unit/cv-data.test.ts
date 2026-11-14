@@ -6,12 +6,12 @@ describe("cv data", () => {
     expect(Object.keys(profiles)).toEqual(["technical-lead", "head-of-engineering"]);
   });
 
-  it("gives every profile a role, a profile statement, a PDF name and five leadership blocks", () => {
+  it("gives every profile a role, a profile statement, a PDF name and four leadership blocks", () => {
     for (const p of Object.values(profiles)) {
       expect(p.role.length).toBeGreaterThan(0);
       expect(p.profile.length).toBeGreaterThan(0);
       expect(p.pdf.endsWith(".pdf")).toBe(true);
-      expect(p.leadership).toHaveLength(5);
+      expect(p.leadership).toHaveLength(4);
     }
   });
 
