@@ -35,9 +35,9 @@ export const cv = {
     ['AI & Automation', ['Claude · Codex · Kiro · KiroCrew']],
   ] as [string, string[]][],
 
-  /* Chronological, newest first. One entry per page. A job that crosses
-     the page break is split in two: the second part has cont: true and
-     no heading. Shared by every profile. */
+  /* Chronological, newest first. Page 1 holds the three main roles in one
+     column; page 2 holds the earlier roles beside the leadership and
+     technical skills. Shared by every profile. */
   pages: [
     [
       { title: 'Backend Team Lead', company: 'ASP Events', tagline: 'Event website provider', dates: 'Mar 24 - Present', sector: 'Event tech', place: 'London',
@@ -67,11 +67,6 @@ export const cv = {
           'Defined and executed technology roadmap from early prototype to enterprise-grade platform, including COVID-era pivot to virtual/hybrid',
           'Engineered platform for multi-million concurrent WebSocket connections',
           'Met a 200ms response-time SLA',
-        ] },
-    ],
-    [
-      { cont: true,
-        bullets: [
           'Designed real-time messaging layer for polling, Q&A, slide sync and analytics',
           'Migrated cloud infrastructure for cost and performance',
           'Delivered data integration solutions across multiple external APIs and providers',
@@ -80,6 +75,8 @@ export const cv = {
           'Enforced OWASP standards with continuous security assessments toward SOC 2 compliance',
         ],
         tags: ['React', 'NodeJS', 'WebSocket', '.NET', 'Python', 'Angular', 'PHP', 'RabbitMQ', 'Redis', 'MySQL', 'Docker', 'Terraform', 'Azure', 'AWS', 'ELK'] },
+    ],
+    [
       { title: 'Web Developer', company: 'Good Elearning', tagline: 'Online accredited business and IT courses', dates: 'Jul 2013 - Apr 2015', sector: 'ELearning', place: 'London',
         logo: 'good-elearning.png',
         bullets: [
@@ -121,7 +118,6 @@ export type Experience = {
   place?: string;
   logo?: string;
   last?: boolean;
-  cont?: boolean;
   bullets: string[];
   tags?: string[];
 };

@@ -16,7 +16,7 @@ describe("cv data", () => {
   });
 
   it("keeps experience in one shared, chronological list (newest first)", () => {
-    const jobs = cv.pages.flat().filter((j) => !j.cont);
+    const jobs = cv.pages.flat();
     expect(jobs[0].company).toBe("ASP Events");
     expect(jobs[jobs.length - 1].company).toBe("iMinds");
   });
