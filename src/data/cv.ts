@@ -83,7 +83,7 @@ export const cv = {
           'Built the academy web platform (LMS) for accredited ITIL, PRINCE2 and TOGAF courses, reporting directly to the CTO',
           'Content tracking, organisational user management, CMS and reporting (HTML5, PDF, Excel)',
           'Enforced TDD adoption, achieving 90% test coverage',
-          'DRAFT: Built the front end in AngularJS with a .NET and Entity Framework back end, covered by NUnit tests',
+          'Built the front end in AngularJS with a .NET and Entity Framework back end, covered by NUnit tests',
         ],
         tags: ['AngularJS', '.NET', 'SQL', 'EF', 'Azure', 'NUnit'] },
       { title: 'Software Developer', company: 'Equisys', tagline: 'Document and expense software', dates: 'Jun 2010 - Jul 2013', sector: 'Office ERP', place: 'London',
@@ -91,7 +91,7 @@ export const cv = {
         bullets: [
           'Full development lifecycle of ERP document and expense software (Zetadocs) in .NET and C++ for desktop and web, in a team of 8',
           'Built SharePoint filing and approved-expense export into Dynamics NAV',
-          'DRAFT: Worked as part of a team of 8 on releases of the desktop and web products, covering feature development and bug fixes',
+          'Worked as part of a team of 8 on releases of the desktop and web products, covering feature development and bug fixes',
         ],
         tags: ['.NET', 'C++', 'Office', 'SharePoint', 'Dynamics', 'SQL', 'Azure'] },
       { title: 'Research Software Engineer', company: 'iMinds', tagline: 'EU research project on mobile thin clients (MobiThin)', dates: 'Oct 2008 - Jun 2010', sector: 'Research', place: 'Ghent, Belgium',
@@ -99,7 +99,7 @@ export const cv = {
         bullets: [
           'Implemented RFB traffic replay tooling and load-testing suites for remote desktop thin clients',
           'Took part in building custom observability solutions with Zabbix, including network monitoring',
-          'DRAFT: Built C++ and Bash load-testing scripts to measure thin-client performance under network load',
+          'Built C++ and Bash load-testing scripts to measure thin-client performance under network load',
         ],
         tags: ['C++', 'Bash', 'Perl', 'RFB', 'Zabbix'] },
     ],
