@@ -64,22 +64,7 @@ const icons: Record<string, string> = {
           )}
         </header>
 
-        <div class={i === 0 ? 'cols one' : 'cols'} style={`margin-top:${i === 0 ? 42 : 28}px`}>
-          {i === 1 && (
-            <div class="side">
-              <section class="leadership">
-                <h2>Leadership</h2>
-                {profile.leadership.map(([h, text]) => <section><h3>{h}</h3><p>{text}</p></section>)}
-              </section>
-              <div class="tech">
-                <h2>Technical</h2>
-                {cv.technical.map(([h, lines]) => (
-                  <section><h3>{h}</h3><p>{lines.map((l, k) => <>{k > 0 && <br />}{l}</>)}</p></section>
-                ))}
-              </div>
-            </div>
-          )}
-
+        <div class={i === 0 ? 'cols one' : 'cols'} style={`margin-top:${i === 0 ? 42 : 20}px`}>
           <div class={i === 1 ? 'main second' : 'main'}>
             {i === 0 && (
               <>
@@ -103,6 +88,21 @@ const icons: Record<string, string> = {
               </div>
             ))}
           </div>
+
+          {i === 1 && (
+            <div class="side">
+              <section class="leadership">
+                <h2>Leadership</h2>
+                {profile.leadership.map(([h, text]) => <section><h3>{h}</h3><p>{text}</p></section>)}
+              </section>
+              <div class="tech">
+                <h2>Technical</h2>
+                {cv.technical.map(([h, lines]) => (
+                  <section><h3>{h}</h3><p>{lines.map((l, k) => <>{k > 0 && <br />}{l}</>)}</p></section>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {i === 1 && (
@@ -157,7 +157,7 @@ const icons: Record<string, string> = {
   .contact div { display: flex; gap: 10px; align-items: center; justify-content: flex-end; font-size: 13px; color: #555; margin-bottom: 4px; }
   .contact svg { width: 17px; height: 17px; fill: #555; flex: none; }
 
-  .cols { display: grid; grid-template-columns: 256px 1fr; column-gap: 32px; }
+  .cols { display: grid; grid-template-columns: 1fr 256px; column-gap: 32px; }
   .cols.one { grid-template-columns: 1fr; }
   .side h2 { font-size: 18px; margin-bottom: 8px; }
   .side h3 { font-size: 12.5px; margin-bottom: 0; }
@@ -171,7 +171,7 @@ const icons: Record<string, string> = {
   .page h2.exp { margin-top: 34px; }
   .main.second { padding-top: 34px; }
 
-  .job { position: relative; padding-left: 58px; margin-bottom: 20px; }
+  .job { position: relative; padding-left: 58px; margin: 0 0 20px; }
   .job::before { content: ''; position: absolute; left: 19px; top: 44px; bottom: -14px; width: 1px; background: #333; }
   .job.last::before { bottom: 6px; }
   .logo { width: 38px; height: 38px; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.35); overflow: hidden; flex: none; }
@@ -187,8 +187,9 @@ const icons: Record<string, string> = {
   .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
   .tag { font-size: 8.5px; font-weight: 700; color: #fff; border-radius: 4px; padding: 1px 7px; line-height: 1.5; }
 
-  .bottom { display: grid; grid-template-columns: 256px 1fr; column-gap: 32px; position: absolute; left: 40px; right: 40px; bottom: 30px; }
-  .edu { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .bottom { display: grid; grid-template-columns: minmax(0, 1fr) 256px; column-gap: 32px; position: absolute; left: 40px; width: calc(100% - 80px); bottom: 78px; }
+  .bottom .edu { display: grid; grid-column: 1; grid-row: 1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+  .bottom .trivia { grid-column: 2; grid-row: 1; }
   .edu h2 { grid-column: 1 / -1; margin: 0; }
   .edu .item { display: flex; gap: 10px; }
   .edu .deg { color: #555; font-weight: 600; font-size: 14px; line-height: 1.2; }
