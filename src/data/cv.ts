@@ -25,6 +25,12 @@ export const cv = {
     ['mail', 'sammydeveille@gmail.com'],
     ['home', 'Henlow, Bedfordshire'],
   ] as [string, string][],
+  highlights: [
+    ['15+', 'years building cloud platforms'],
+    ['2 → 10', 'engineers grown and led'],
+    ['3', 'leadership roles'],
+    ['ISO 27001', 'certification led'],
+  ] as [string, string][],
   technical: [
     ['Architecture & Cloud', ['AWS · Azure · Docker · Kubernetes · Terraform · Ansible']],
     ['Delivery & Quality', ['CI/CD (GitHub Actions, Jenkins)', 'TDD and test automation (Playwright, Jest)', 'Load testing (K6)']],
@@ -65,8 +71,7 @@ export const cv = {
         bullets: [
           'Joined as employee #3, evolved prototype into market-ready product through multiple funding rounds, securing Big Four clients',
           'Defined and executed technology roadmap from early prototype to enterprise-grade platform, including COVID-era pivot to virtual/hybrid',
-          'Engineered platform for multi-million concurrent WebSocket connections',
-          'Met a 200ms response-time SLA',
+          'Engineered platform for multi-million concurrent WebSocket connections, meeting a 200ms response-time SLA',
           'Designed real-time messaging layer for polling, Q&A, slide sync and analytics',
           'Migrated cloud infrastructure for cost and performance',
           'Delivered data integration solutions across multiple external APIs and providers',
@@ -135,10 +140,7 @@ const leadershipBase: Leadership = [
 ];
 
 const profileBase =
-  'Technical lead with a track record of scaling teams, streamlining processes, and delivering secure cloud solutions aligned with business goals.';
-
-/* PLACEHOLDER: the Head of Engineering copy is not written yet. It starts
-   as a copy of the Technical Lead text and is rewritten in its own pass. */
+  'Head of Engineering with over 15 years of experience building and scaling engineering teams, from early prototype to enterprise platform. Grew the team at Springpod from 3 to 6, following eight years as CTO of Glisser, leading a team of 10. Known for hiring well and delivering secure cloud platforms.';
 export const profiles: Record<string, CvProfile> = {
   'technical-lead': {
     slug: 'technical-lead',
