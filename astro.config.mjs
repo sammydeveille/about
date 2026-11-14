@@ -6,4 +6,7 @@ export default defineConfig({
   base: '/',
   output: 'static',
   integrations: [sitemap()],
+  redirects: {
+    '/cv': '/cv/technical-lead',
+  },
 });

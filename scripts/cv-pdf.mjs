@@ -1,15 +1,25 @@
-// Renders the /cv page to public/Sammy-Deveille-Technical-Lead-CV.pdf
-// 1. npm run dev        (in one terminal)
-// 2. npm run cv:pdf     (in another)
+// Renders each CV profile page to its PDF in public/.
+//   npm run cv:pdf                          all profiles
+//   node scripts/cv-pdf.mjs technical-lead  one profile
+// Start the site first (npm run dev), or set CV_BASE to another origin.
 import { chromium } from 'playwright';
 
-const url = process.env.CV_URL ?? 'http://localhost:4321/cv';
-const out = 'public/Sammy Deveille - Technical Lead - CV.pdf';
+const base = process.env.CV_BASE ?? 'http://localhost:4321/cv/';
+const files = {
+  'technical-lead': 'Sammy Deveille - Technical Lead - CV.pdf',
+  'head-of-engineering': 'Sammy Deveille - Head of Engineering - CV.pdf',
+};
+const slugs = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(files);
 
 const browser = await chromium.launch();
-const page = await browser.newPage();
-await page.goto(url, { waitUntil: 'networkidle' });
-await page.evaluate(() => document.fonts.ready);
-await page.pdf({ path: out, preferCSSPageSize: true, printBackground: true });
+for (const slug of slugs) {
+  if (!files[slug]) throw new Error(`Unknown profile: ${slug}`);
+  const out = `public/${files[slug]}`;
+  const page = await browser.newPage();
+  await page.goto(base + slug, { waitUntil: 'networkidle' });
+  await page.evaluate(() => document.fonts.ready);
+  await page.pdf({ path: out, preferCSSPageSize: true, printBackground: true });
+  await page.close();
+  console.log(`Wrote ${out}`);
+}
 await browser.close();
-console.log(`Wrote ${out}`);

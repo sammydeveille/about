@@ -1,115 +1,17 @@
 ---
-/* =====================================================================
-   EDIT THE CV HERE. Logos are files in public/logos/ (set `logo` to the
-   file name). Everything below the closing --- is layout.
-   ===================================================================== */
+/* One CV page per profile: /cv/technical-lead and /cv/head-of-engineering.
+   Content lives in src/data/cv.ts. Everything below the --- is layout. */
+import { cv, profiles, type CvProfile } from '../../data/cv';
+
+export function getStaticPaths() {
+  return Object.values(profiles).map((profile) => ({
+    params: { profile: profile.slug },
+    props: { profile },
+  }));
+}
+
+const { profile } = Astro.props as { profile: CvProfile };
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const PDF = 'Sammy Deveille - Technical Lead - CV.pdf'; // generated into public/ by `npm run cv:pdf`
-
-const cv = {
-  name: 'Sammy Deveille',
-  role: 'Technical Lead',
-  contact: [
-    ['phone', '07585 954 288'],
-    ['mail', 'sammydeveille@gmail.com'],
-    ['home', 'Henlow, Bedfordshire'],
-  ],
-  profile:
-    'Technical lead with a track record of scaling teams, streamlining processes, and delivering secure cloud solutions aligned with business goals.',
-  leadership: [
-    ['Strategy & Vision', 'Owned technical roadmaps from early-stage prototype through enterprise scale. Led architecture decisions across cloud migrations, platform pivots and compliance programs.'],
-    ['People & Growth', 'Scaled teams from 2 to 10+, shaped hiring pipelines, and mentored engineers through to senior/lead roles. Built cross-functional collaboration across product, design and engineering.'],
-    ['Process & Delivery', 'Introduced Agile, TDD and documentation-first practices. Balanced short-term delivery with long-term architectural investment. Track engineering effectiveness through DORA metrics'],
-    ['Governance & Compliance', 'Led ISO 27001, GDPR and Cyber Essentials accreditation. Security-first mindset: least privilege by default, continuous assessment, risk-minimised architecture.'],
-    ['Culture & Mindset', 'Cultivated "no blame" environments that encourage experimentation, continuous learning and knowledge sharing. Data-driven decision-making to align engineering effort with business outcomes.'],
-  ],
-  technical: [
-    ['Cloud & IaC', ['AWS · Azure · Docker · K8S · Helm', 'Ansible · CloudFormation · Terraform']],
-    ['Application Development', ['NodeJS · TypeScript · NestJS', 'React · Angular · Next.JS', 'Python · .NET · C++ · Java']],
-    ['APIs', ['REST · GraphQL · WebSocket · gRPC']],
-    ['Data & Storage', ['MySQL · PostgreSQL · InfluxDB', 'Redis · S3']],
-    ['CI/CD & Security', ['GitHub Actions · Jenkins · CodeBuild', 'Trivy · OWASP ZAP · DefectDojo']],
-    ['Observability', ['CloudWatch · Grafana · Prometheus', 'NewRelic · Zabbix']],
-    ['Testing', ['Mocha · Playwright · Supertest', 'K6 · Jest · NUnit']],
-    ['Integration', ['Okta · OneLogin · Office365', 'Stripe · SalesForce · HubSpot', 'Zapier · Mapbox · Jitsi']],
-    ['AI / LLM', ['OpenRouter · LM Studio · LangChain']],
-  ],
-
-  /* One entry per page. A job that crosses the page break is split in two:
-     the second part has cont: true and no heading. */
-  pages: [
-    [
-      { title: 'Technical Lead', company: 'ASP Events', tagline: 'Event website provider', dates: 'Mar 24 - Present', sector: 'Event tech', place: 'London',
-        logo: 'asp.png',
-        bullets: [
-          'Strengthened network security posture and optimised infrastructure spend, reducing risks and costs',
-          'Implemented CI/CD pipelines with security scanning and deployment automation',
-          'Dockerized application layer for portability and consistency',
-          'Drove TDD adoption and test automation to raise code quality',
-          'Established performance benchmarking to identify and resolve bottlenecks',
-          'Led ColdFusion-to-Lucee migration, cutting licensing overhead',
-          'Asset compression for significant speed and cost reduction',
-          'Mentored team, fostering skill growth and continuous improvement',
-        ],
-        tags: ['React', 'NodeJS', 'Java', 'Lucee', 'Redis', 'MySQL', 'AWS', 'Docker', 'Ansible', 'Terraform', 'Grafana', 'Prometheus'] },
-      { title: 'Head of Engineering', company: 'Springpod', tagline: 'Career guidance e-learning for students', dates: 'Apr 2023 - Jan 2024', sector: 'ELearning', place: 'London',
-        logo: 'springpod.png',
-        bullets: [
-          'Adopted Scrum in a team of 6 to align with company goals',
-          'Product delivery: content delivery, indexing and maintenance',
-          'Architected SSO identity federation for UCAS partnership',
-          'Streamlined documentation and processes',
-        ],
-        tags: ['React', 'NodeJS', 'Next.JS', 'NestJS', 'GraphQL', 'gRPC', 'AWS', 'Docker', 'K8S'] },
-      { title: 'Chief Technology Officer', company: 'Glisser', tagline: 'Event tech powering real-time interaction', dates: 'Apr 2015 - Jan 2023', sector: 'Event tech', place: 'London',
-        logo: 'glisser.png',
-        bullets: [
-          'Joined as employee #3, evolved prototype into market-ready product through multiple funding rounds, securing Big Four clients',
-          'Defined and executed technology roadmap from early prototype to enterprise-grade platform, including COVID-era pivot to virtual/hybrid',
-          'Engineered platform for multi-million concurrent WebSocket connections',
-        ] },
-    ],
-    [
-      { cont: true,
-        bullets: [
-          'Designed real-time messaging layer for polling, Q&A, slide sync and analytics',
-          'Migrated cloud infrastructure for cost and performance',
-          'Delivered data integration solutions across multiple external APIs and providers',
-          'Scaled engineering from 2 to 10, shaping hiring, onboarding and mentoring engineers through to senior/lead roles',
-          'Led ISO 27001 certification and GDPR compliance',
-          'Enforced OWASP standards with continuous security assessments toward SOC 2 compliance',
-        ],
-        tags: ['React', 'NodeJS', 'WebSocket', '.NET', 'Python', 'Angular', 'PHP', 'RabbitMQ', 'Redis', 'MySQL', 'Docker', 'Terraform', 'Azure', 'AWS', 'ELK'] },
-      { title: 'Web Developer', company: 'Good Elearning', tagline: 'Online accredited business and IT courses', dates: 'Jul 2013 - Apr 2015', sector: 'ELearning', place: 'London',
-        logo: 'good-elearning.png',
-        bullets: [
-          'Led development and rollout of a bespoke LMS reporting directly to the CTO',
-          'Content tracking, organisational user management, CMS and reporting (HTML5, PDF, Excel)',
-          'Enforced TDD adoption, achieving 90% test coverage',
-        ],
-        tags: ['AngularJS', '.NET', 'SQL', 'EF', 'Azure', 'NUnit'] },
-      { title: 'Software Developer', company: 'Equisys', tagline: 'Document and expense software', dates: 'Jun 2010 - Jul 2013', sector: 'Office ERP', place: 'London',
-        logo: 'equisys.png',
-        bullets: [
-          'Full development lifecycle of ERP software in .NET and C++ for desktop and web applications in a team of 8',
-          'Integration with MS Office, SharePoint, Dynamics NAV',
-        ],
-        tags: ['.NET', 'C++', 'Office', 'SharePoint', 'Dynamics', 'SQL', 'Azure'] },
-      { title: 'Research Software Engineer', company: 'iMinds', tagline: 'Thin client european research project', dates: 'Oct 2008 - Jun 2010', sector: 'Research', place: 'Ghent, Belgium',
-        logo: 'iminds.png', last: true,
-        bullets: [
-          'Implemented tooling for remote desktop protocol and network/bandwidth optimization',
-          'Network monitoring and load testing in C++ and Bash',
-        ],
-        tags: ['C++', 'Bash', 'Perl', 'RFB', 'Zabbix'] },
-    ],
-  ],
-  trivia: [['French native', 'UK settled status'], ['Musician for live and studio'], ['Cyclist']],
-  education: [
-    { degree: 'Masters', field: 'Computer Sciences', school: ['Universite Polytechnique', 'Hauts de France'], dates: '2005 - 2008', place: 'Valenciennes, France', logo: 'uphf.png' },
-    { degree: 'HND', field: 'Computer Sciences', school: ['Institut Universitaire de', 'Technologie'], dates: '2003 - 2005', place: 'Valenciennes, France', logo: 'iut.png' },
-  ],
-};
 
 const tagColors: Record<string, string> = {
   React: '#3fd8f5', NodeJS: '#8cd444', Java: '#4f7ea3', Lucee: '#1a6fa8', Redis: '#d62f3a', MySQL: '#14598a',
@@ -131,7 +33,7 @@ const icons: Record<string, string> = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
-    <title>{cv.name} - {cv.role} - CV</title>
+    <title>{cv.name} - {profile.role} - CV</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -139,14 +41,17 @@ const icons: Record<string, string> = {
   <body>
     <div class="toolbar">
       <a class="btn alt" href="/">← Back</a>
-      <a class="btn" href={`${base}${PDF}`} download>Download PDF</a>
+      {Object.values(profiles).map((p) => (
+        <a class:list={['btn', 'alt', { active: p.slug === profile.slug }]} href={`${base}cv/${p.slug}`} aria-current={p.slug === profile.slug ? 'page' : undefined}>{p.label}</a>
+      ))}
+      <a class="btn" href={`${base}${profile.pdf}`} download>Download PDF</a>
       <button class="btn alt" onclick="window.print()">Print</button>
     </div>
 
     {cv.pages.map((jobs, i) => (
       <div class="page">
         <h1>{cv.name}</h1>
-        <div class="role">{cv.role}</div>
+        <div class="role">{profile.role}</div>
 
         <div class="cols" style={`margin-top:${i === 0 ? 42 : 36}px`}>
           <div class="side">
@@ -159,7 +64,7 @@ const icons: Record<string, string> = {
                   ))}
                 </section>
                 <h2>Leadership</h2>
-                {cv.leadership.map(([h, p]) => <section><h3>{h}</h3><p>{p}</p></section>)}
+                {profile.leadership.map(([h, text]) => <section><h3>{h}</h3><p>{text}</p></section>)}
               </>
             ) : (
               <div class="tech">
@@ -175,7 +80,7 @@ const icons: Record<string, string> = {
             {i === 0 && (
               <>
                 <h2>Profile</h2>
-                <p class="profile">{cv.profile}</p>
+                <p class="profile">{profile.profile}</p>
                 <h2 class="exp">Experience</h2>
               </>
             )}
@@ -234,6 +139,7 @@ const icons: Record<string, string> = {
   .toolbar { position: fixed; top: 12px; right: 16px; display: flex; gap: 8px; z-index: 10; }
   .btn { font: 600 12px 'Montserrat', Arial, sans-serif; background: #e8e8e8; color: #111; border: 0; border-radius: 6px; padding: 8px 14px; cursor: pointer; text-decoration: none; }
   .btn.alt { background: #2a2a2a; color: #e8e8e8; }
+  .btn.alt.active { background: #e8e8e8; color: #111; }
 
   .page { width: 210mm; height: 297mm; margin: 16px auto; background: #fff; padding: 34px 40px 30px; position: relative; overflow: hidden; break-after: page; box-shadow: 0 2px 12px rgba(0,0,0,.18); }
   .page:last-child { break-after: auto; }

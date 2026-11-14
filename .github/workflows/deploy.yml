@@ -39,9 +39,9 @@ jobs:
       - name: Generate CV PDF
         run: |
           npx http-server dist -p 4321 --silent &
-          npx wait-on http://localhost:4321/cv/
-          CV_URL=http://localhost:4321/cv node scripts/cv-pdf.mjs
-          cp "public/Sammy Deveille - Technical Lead - CV.pdf" "dist/Sammy Deveille - Technical Lead - CV.pdf"
+          npx wait-on http://localhost:4321/cv/technical-lead/
+          CV_BASE=http://localhost:4321/cv/ node scripts/cv-pdf.mjs
+          cp public/*.pdf dist/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
