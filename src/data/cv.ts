@@ -18,6 +18,10 @@ export type CvProfile = {
   leadership: Leadership;
 };
 
+/* Bullets grouped under sub-headings. The home page shows the headings;
+   the CV shows the flat list (`bullets` is derived from the groups). */
+const grouped = (groups: [string, string[]][]) => ({ groups, bullets: groups.flatMap(([, b]) => b) });
+
 export const cv = {
   name: 'Sammy Deveille',
   contact: [
@@ -26,7 +30,7 @@ export const cv = {
     ['home', 'Henlow, Bedfordshire'],
   ] as [string, string][],
   highlights: [
-    ['15+', 'years building cloud platforms'],
+    ['15+', 'years in engineering'],
     ['2 → 10', 'engineers grown and led'],
     ['3', 'leadership roles'],
     ['ISO 27001', 'certification led'],
@@ -48,37 +52,55 @@ export const cv = {
     [
       { title: 'Backend Team Lead', company: 'ASP Events', tagline: 'Event website provider', dates: 'Mar 24 - Present', sector: 'Event tech', place: 'London',
         logo: 'asp.png',
-        bullets: [
-          'Lead a backend team of 4 on a platform serving 160 million requests every week',
-          'Delivered five-figure annual savings through a code rewrite, resource reservations and infrastructure projects',
-          'Built CI/CD pipelines with automated security scanning and deployment',
-          'Led the ColdFusion-to-Lucee migration, cutting licensing overhead',
-          'Drove TDD and test automation, with performance benchmarking to fix bottlenecks',
-          'Dockerised the application layer and added asset compression for speed and cost',
-        ],
+        ...grouped([
+          ['Team & Culture', [
+            'Lead a backend team of 4 on a platform serving 160 million requests every week',
+          ]],
+          ['Infrastructure & Cost', [
+            'Delivered five-figure annual savings through a code rewrite, resource reservations and infrastructure projects',
+            'Built CI/CD pipelines with automated security scanning and deployment',
+          ]],
+          ['Delivery & Quality', [
+            'Led the ColdFusion-to-Lucee migration, cutting licensing overhead',
+            'Drove TDD and test automation, with performance benchmarking to fix bottlenecks',
+            'Dockerised the application layer and added asset compression for speed and cost',
+          ]],
+        ]),
         tags: ['React', 'NodeJS', 'Java', 'Lucee', 'Redis', 'MySQL', 'AWS', 'Docker', 'Ansible', 'Terraform', 'Grafana', 'Prometheus'] },
       { title: 'Head of Engineering', company: 'Springpod', tagline: 'Career guidance e-learning for students', dates: 'Apr 2023 - Jan 2024', sector: 'ELearning', place: 'London',
         logo: 'springpod.png',
-        bullets: [
-          'Grew the engineering team from 3 to 6, hiring front-end, back-end and QA engineers',
-          'Led hiring and mentoring across the team',
-          'Introduced code reviews and Scrum sprints to align delivery with company goals',
-          'Designed and delivered the UCAS SSO integration, built to scale for a UK-wide rollout',
-        ],
+        ...grouped([
+          ['Delivery', [
+            'Designed and delivered the UCAS SSO integration, built to scale for a UK-wide rollout',
+          ]],
+          ['Team & Culture', [
+            'Grew the engineering team from 3 to 6, hiring front-end, back-end and QA engineers',
+            'Led hiring and mentoring across the team',
+            'Introduced code reviews and Scrum sprints to align delivery with company goals',
+          ]],
+        ]),
         tags: ['React', 'NodeJS', 'Next.JS', 'NestJS', 'GraphQL', 'gRPC', 'AWS', 'Docker', 'K8S'] },
       { title: 'Chief Technology Officer', company: 'Glisser', tagline: 'Event tech powering real-time interaction', dates: 'Apr 2015 - Jan 2023', sector: 'Event tech', place: 'London',
         logo: 'glisser.png',
-        bullets: [
-          'Joined as employee #3, evolved prototype into market-ready product through multiple funding rounds, securing Big Four clients',
-          'Defined and executed technology roadmap from early prototype to enterprise-grade platform, including COVID-era pivot to virtual/hybrid',
-          'Engineered platform for multi-million concurrent WebSocket connections, meeting a 200ms response-time SLA',
-          'Designed real-time messaging layer for polling, Q&A, slide sync and analytics',
-          'Migrated cloud infrastructure for cost and performance',
-          'Delivered data integration solutions across multiple external APIs and providers',
-          'Led an engineering team of 10, growing it from 2 and shaping hiring, onboarding and mentoring through to senior/lead roles',
-          'Led ISO 27001 certification and GDPR compliance',
-          'Enforced OWASP standards with continuous security assessments toward SOC 2 compliance',
-        ],
+        ...grouped([
+          ['Strategy & Growth', [
+            'Joined as employee #3, evolved prototype into market-ready product through multiple funding rounds, securing Big Four clients',
+            'Defined and executed technology roadmap from early prototype to enterprise-grade platform, including COVID-era pivot to virtual/hybrid',
+          ]],
+          ['Architecture & Scale', [
+            'Engineered platform for multi-million concurrent WebSocket connections, meeting a 200ms response-time SLA',
+            'Designed real-time messaging layer for polling, Q&A, slide sync and analytics',
+            'Migrated cloud infrastructure for cost and performance',
+            'Delivered data integration solutions across multiple external APIs and providers',
+          ]],
+          ['Team & Culture', [
+            'Led an engineering team of 10, growing it from 2 and shaping hiring, onboarding and mentoring through to senior/lead roles',
+          ]],
+          ['Security & Compliance', [
+            'Led ISO 27001 certification and GDPR compliance',
+            'Enforced OWASP standards with continuous security assessments toward SOC 2 compliance',
+          ]],
+        ]),
         tags: ['React', 'NodeJS', 'WebSocket', '.NET', 'Python', 'Angular', 'PHP', 'RabbitMQ', 'Redis', 'MySQL', 'Docker', 'Terraform', 'Azure', 'AWS', 'ELK'] },
     ],
     [
@@ -127,6 +149,7 @@ export type Experience = {
   logo?: string;
   last?: boolean;
   bullets: string[];
+  groups?: [string, string[]][];
   tags?: string[];
 };
 
